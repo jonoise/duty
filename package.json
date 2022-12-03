@@ -17,6 +17,7 @@
     "@codemirror/view": "^6.6.0",
     "@uiw/codemirror-theme-okaidia": "^4.15.1",
     "@uiw/react-codemirror": "^4.15.1",
+    "esast-util-from-js": "^1.1.0",
     "next": "13.0.6",
     "react": "18.2.0",
     "react-dom": "18.2.0"

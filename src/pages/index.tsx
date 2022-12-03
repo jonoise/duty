@@ -46,11 +46,13 @@ const HomePage = () => {
             <p>{fn.name}</p>
             <button
               onClick={async () => {
-                await fetch(`/api/test`, {
+                const res = await fetch(`/api/test`, {
                   method: 'POST',
                   headers: { 'content-type': 'application/json' },
                   body: JSON.stringify({ content: fn.content }),
                 })
+                const data = await res.json()
+                console.log(data)
               }}
             >
               Enviar
