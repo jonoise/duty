@@ -3,12 +3,11 @@ import CodeMirror from '@uiw/react-codemirror'
 import { javascript } from '@codemirror/lang-javascript'
 import { okaidia } from '@uiw/codemirror-theme-okaidia'
 
-const fnContent = `function add(a, b) {
-  return a + b;
-}
-const r = add(1, 2);
-console.log(r);
-`
+const fnContent = `module.exports = async function duty(env) {
+  const r = await fetch("https://google.com")
+  const data = await r.text()
+  return data
+}`
 
 const file2 = {
   id: 2,

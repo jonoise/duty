@@ -20,7 +20,9 @@
     "esast-util-from-js": "^1.1.0",
     "next": "13.0.6",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "vm2": "^3.9.12",
+    "zustand": "^4.1.4"
   },
   "devDependencies": {
     "@types/node": "18.11.10",

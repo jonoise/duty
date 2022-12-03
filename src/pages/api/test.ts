@@ -1,20 +1,25 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { fromJs } from 'esast-util-from-js'
+import { NodeVM } from 'vm2'
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { content } = req.body
 
   let isValidCode = true
-  const ast = fromJs(content, { module: true }) as any
-  for (const statement of ast.body) {
-    if (statement.type === 'ImportDeclaration') {
-      if (statement.source.value === 'os') {
-        isValidCode = false
-        break
-      }
-    }
-  }
 
-  res.status(200).json({ isValidCode })
+  const vm = new NodeVM({
+    console: 'inherit',
+    sandbox: { fetch },
+    require: {
+      external: true,
+    },
+  })
+
+  if (isValidCode) {
+    let b = vm.run(content)
+    let r = await b()
+    return res.status(200).json({ message: r })
+  } else {
+    return res.status(400).json({ message: 'Invalid code' })
+  }
 }
 
 type ApiQuery = {
