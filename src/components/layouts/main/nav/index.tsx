@@ -1,9 +1,11 @@
 import { SiteContainer } from '@/components/generics/SiteContainer'
+import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import React from 'react'
 import { GiAbstract089 } from 'react-icons/gi'
 
 const MainLayoutNavbar = () => {
+  const { data: session } = useSession()
   return (
     <nav>
       <SiteContainer>
@@ -19,12 +21,21 @@ const MainLayoutNavbar = () => {
             >
               Pricing
             </Link>
-            <Link
-              href='/signup'
-              className='bg-gradient-to-r from-emerald-400 to-sky-300 text-zinc-900 m-0 p-0 rounded-full flex items-center px-5 py-2 text-sm font-bold'
-            >
-              Sign up
-            </Link>
+            {session ? (
+              <Link
+                href='/signup'
+                className='bg-gradient-to-r from-emerald-400 to-sky-300 text-zinc-900 m-0 p-0 rounded-full flex items-center px-5 py-2 text-sm font-bold'
+              >
+                Logout
+              </Link>
+            ) : (
+              <Link
+                href='/signup'
+                className='bg-gradient-to-r from-emerald-400 to-sky-300 text-zinc-900 m-0 p-0 rounded-full flex items-center px-5 py-2 text-sm font-bold'
+              >
+                Sign up
+              </Link>
+            )}
           </div>
         </div>
       </SiteContainer>
