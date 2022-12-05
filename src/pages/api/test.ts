@@ -15,8 +15,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   if (isValidCode) {
     let b = vm.run(content)
-    let r = await b()
-    return res.status(200).json({ message: r })
+    let result = await b()
+    return res.status(200).json(result)
   } else {
     return res.status(400).json({ message: 'Invalid code' })
   }

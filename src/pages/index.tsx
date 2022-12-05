@@ -9,15 +9,15 @@ const fnContent = `module.exports = async function duty(env) {
   return data
 }`
 
-const file2 = {
+const file = {
   id: 2,
   content: fnContent,
   name: 'index.tsx',
 }
 
 const HomePage = () => {
-  const [fn, setFn] = useState(file2)
-  const [selectedFile, setSelectedFile] = useState(file2)
+  const [fn, setFn] = useState(file)
+  const [selectedFile, setSelectedFile] = useState(file)
 
   const handleFileSelect = (file: any) => {
     setSelectedFile(file)
