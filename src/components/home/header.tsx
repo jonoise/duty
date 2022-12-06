@@ -19,7 +19,7 @@ const codeSnippet = dutyFnContent
 
 export const HomeHeader = () => {
   return (
-    <div className='flex flex-col w-full py-10 lg:flex-row lg:items-center space-y-5'>
+    <div className='flex flex-col w-full py-20 lg:flex-row lg:items-center space-y-5'>
       <div className='lg:w-1/2 space-y-5'>
         <h1 className='text-9xl font-bold'>Duty</h1>
         <p className='inline bg-gradient-to-r from-indigo-200 via-sky-400 to-indigo-200 bg-clip-text font-display text-2xl md:text-5xl  tracking-tight text-transparent'>

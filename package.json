@@ -21,6 +21,7 @@
     "@uiw/codemirror-theme-xcode": "^4.15.1",
     "@uiw/react-codemirror": "^4.15.1",
     "clsx": "^1.2.1",
+    "cobe": "^0.6.2",
     "esast-util-from-js": "^1.1.0",
     "mongodb": "^4.12.1",
     "mongoose": "^6.7.5",
