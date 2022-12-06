@@ -4,8 +4,10 @@ import { NewProjectButton } from '@/components/dashboard'
 import { GetServerSidePropsContext } from 'next'
 import { unstable_getServerSession } from 'next-auth'
 import { authOptions } from '../api/auth/[...nextauth]'
+import { useSession } from 'next-auth/react'
 
 const DashboardPage = () => {
+  const { data: session } = useSession()
   return (
     <DashboardLayout>
       {/* Write a beautiful dashboard to write serverless functions with tailwind */}
@@ -14,10 +16,6 @@ const DashboardPage = () => {
           <h1 className='text-3xl font-bold'>Dashboard</h1>
           <NewProjectButton />
         </div>
-        <p className='text-gray-500'>
-          Write a beautiful dashboard to write serverless functions with
-          tailwind
-        </p>
       </div>
     </DashboardLayout>
   )

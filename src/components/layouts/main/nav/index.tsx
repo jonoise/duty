@@ -1,5 +1,5 @@
 import { SiteContainer } from '@/components/generics/SiteContainer'
-import { useSession } from 'next-auth/react'
+import { signOut, useSession } from 'next-auth/react'
 import Link from 'next/link'
 import React from 'react'
 import { GiAbstract089 } from 'react-icons/gi'
@@ -22,12 +22,12 @@ const MainLayoutNavbar = () => {
               Pricing
             </Link>
             {session ? (
-              <Link
-                href='/signup'
+              <button
+                onClick={() => signOut()}
                 className='bg-gradient-to-r from-emerald-400 to-sky-300 text-zinc-900 m-0 p-0 rounded-full flex items-center px-5 py-2 text-sm font-bold'
               >
                 Logout
-              </Link>
+              </button>
             ) : (
               <Link
                 href='/signup'

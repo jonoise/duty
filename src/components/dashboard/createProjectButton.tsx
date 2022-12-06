@@ -1,28 +1,62 @@
 import { useState, Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { TextInput } from '@/components/inputs'
-import { useForm } from 'react-hook-form'
+import { FieldValues, useForm } from 'react-hook-form'
+import { useSession } from 'next-auth/react'
+import ky from 'ky'
+import { toast, Toaster } from 'react-hot-toast'
+import { SimpleNotification } from '@/components/generics'
 
 export const NewProjectButton = () => {
   let [isOpen, setIsOpen] = useState(false)
+  let [loading, setLoading] = useState(false)
+
+  const { data: session } = useSession()
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm()
+
+  const onSubmit = async (data: FieldValues) => {
+    setLoading(true)
+    try {
+      const res = await ky
+        .get(`/api/internal/more-projects`)
+        .json<{ canCreateMoreProjects: boolean }>()
+      if (!res.canCreateMoreProjects) {
+        toast.error('You need to upgrade your plan to create more projects')
+        setLoading(false)
+        return
+      }
+    } catch (error) {
+      console.log(error)
+    }
+
+    try {
+      await ky.post('/api/internal/project', {
+        json: { ...data, userId: session?.user.id },
+      })
+      toast.success('Project created successfully')
+      setIsOpen(false)
+    } catch (error) {
+      console.log(error)
+    }
+    setLoading(false)
+  }
+
   return (
     <>
+      <Toaster />
       <button
         onClick={() => setIsOpen(true)}
-        className='px-2 py-1 bg-zinc-800 rounded'
+        className='px-5 py-1 bg-sky-600 rounded'
       >
         Create Project
       </button>
       <Transition show={isOpen} as={Fragment}>
         <Dialog onClose={() => setIsOpen(false)} className='relative z-50'>
-          {/*
-          Use one Transition.Child to apply one transition to the backdrop...
-        */}
           <Transition.Child
             as={Fragment}
             enter='ease-out duration-300'
@@ -34,11 +68,6 @@ export const NewProjectButton = () => {
           >
             <div className='fixed inset-0 bg-black/30' />
           </Transition.Child>
-
-          {/*
-          ...and another Transition.Child to apply a separate transition
-          to the contents.
-        */}
           <Transition.Child
             as={Fragment}
             enter='ease-out duration-300'
@@ -49,9 +78,7 @@ export const NewProjectButton = () => {
             leaveTo='opacity-0 scale-95'
           >
             <form
-              onSubmit={handleSubmit((data) =>
-                alert(JSON.stringify(data, null, 2))
-              )}
+              onSubmit={handleSubmit(onSubmit)}
               className='fixed inset-0 flex items-center justify-center p-4'
             >
               <Dialog.Panel
@@ -77,17 +104,19 @@ export const NewProjectButton = () => {
 
                 <div className='flex justify-end'>
                   <button
+                    disabled={loading}
                     type='button'
-                    className='px-2 py-1 bg-zinc-800 rounded'
+                    className='px-5 py-1 bg-sky-600 rounded'
                     onClick={() => setIsOpen(false)}
                   >
                     Cancel
                   </button>
                   <button
+                    disabled={loading}
                     type='submit'
-                    className='ml-2 px-2 py-1 bg-zinc-800 rounded'
+                    className='ml-2 px-5 py-1 bg-sky-600 rounded'
                   >
-                    Create
+                    {loading ? 'Creating...' : 'Create'}
                   </button>
                 </div>
               </Dialog.Panel>
