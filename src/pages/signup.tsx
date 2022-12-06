@@ -1,8 +1,9 @@
 import MainLayout from '@/components/layouts/main'
-import { signIn } from 'next-auth/react'
+import { signIn, useSession } from 'next-auth/react'
 import React from 'react'
 
 const SignUpPage = () => {
+  const { data } = useSession()
   return (
     <MainLayout>
       <button
