@@ -1,7 +1,12 @@
 import mongoose from 'mongoose'
+import { DutyI } from './duty'
 const projectSchema = new mongoose.Schema(
   {
     name: {
+      type: String,
+      required: true,
+    },
+    description: {
       type: String,
       required: true,
     },
@@ -28,7 +33,7 @@ export interface ProjectI {
   name: string
   language: string
   user: string
-  duties: string[]
+  duties: DutyI[]
   createdAt: Date
   updatedAt: Date
 }

@@ -10,10 +10,10 @@ import {
 } from '@heroicons/react/24/outline'
 import { GiAbstract089 } from 'react-icons/gi'
 import Link from 'next/link'
+import { DashboardLayoutHeader } from './header'
 
 const navigation = [
-  { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
-  { name: 'Projects', href: '#', icon: FolderIcon, current: false },
+  { name: 'Projects', href: '#', icon: FolderIcon, current: true },
   { name: 'Jobs', href: '#', icon: ClockIcon, current: false },
   { name: 'Reports', href: '#', icon: ChartBarIcon, current: false },
 ]
@@ -22,7 +22,12 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-const DashboardLayout: FC<PropsWithChildren> = (props) => {
+interface Props {
+  title: string
+  action: React.ReactElement
+}
+
+const DashboardLayout: FC<PropsWithChildren & Props> = (props) => {
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   return (
@@ -228,6 +233,10 @@ const DashboardLayout: FC<PropsWithChildren> = (props) => {
           </div>
           <main className='flex-1'>
             <div className='mx-auto max-w-7xl px-4 sm:px-6 md:px-8'>
+              <DashboardLayoutHeader
+                title={props.title}
+                action={props.action}
+              />
               {props.children}
             </div>
           </main>

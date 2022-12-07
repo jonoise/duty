@@ -1,7 +1,6 @@
-import { Project } from '@/models'
+import { Duty, Project } from '@/models'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { Session } from 'next-auth'
-import { createProjectDbUrl } from '../createProjectDbUrl'
 
 export const getProjects = async (
   req: NextApiRequest,
@@ -9,14 +8,24 @@ export const getProjects = async (
   session: Session
 ) => {
   const { projectId } = req.query
+  try {
+    if (projectId) {
+      const p = await Project.findOne({
+        _id: projectId,
+        user: session.user.id,
+      }).populate({
+        path: 'duties',
+        model: Duty,
+      })
+      if (!p) return res.status(404).json({ error: 'Project not found' })
+      return res.status(200).json(p)
+    }
+    const ps = await Project.find({ user: session.user.id })
 
-  if (projectId) {
-    const p = await Project.findById(projectId)
-    return res.status(200).json(p)
+    return res.status(200).json(ps)
+  } catch (error) {
+    return res.status(500).json({ error })
   }
-  const ps = await Project.find({ user: session.user.id })
-
-  return res.status(200).json(ps)
 }
 
 export const createProject = async (
