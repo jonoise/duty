@@ -14,7 +14,10 @@ export const getProjects = async (
     const p = await Project.findById(projectId)
     return res.status(200).json(p)
   }
-  const ps = await Project.find({ user: session.user.id })
+  const ps = await Project.find({ user: session.user.id }).populate({
+    path: 'db',
+    model: ProjectDb,
+  })
 
   return res.status(200).json(ps)
 }
@@ -30,10 +33,13 @@ export const createProject = async (
       user: session.user.id,
     })
 
-    await ProjectDb.create({
+    const db = await ProjectDb.create({
       project: p._id,
       url: createProjectDbUrl(p._id),
     })
+
+    p.db = db._id.toString()
+    await p.save()
 
     return res.status(201).json(p)
   } catch (error) {

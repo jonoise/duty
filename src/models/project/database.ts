@@ -20,4 +20,15 @@ const databaseSchema = new mongoose.Schema(
 )
 
 export const ProjectDb =
-  mongoose.models.Database || mongoose.model('ProjectDatabase', databaseSchema)
+  mongoose.models.ProjectDatabase ||
+  mongoose.model('ProjectDatabase', databaseSchema)
+
+export interface ProjectDbI {
+  _id: string
+  url: string
+  image: string
+  project: string
+  region: string
+  updatedAt: string
+  createdAt: string
+}
