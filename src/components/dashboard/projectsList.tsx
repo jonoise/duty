@@ -2,7 +2,6 @@ import React from 'react'
 import useSWR from 'swr'
 import fetcher from '@/lib/fetcher'
 import { ProjectI } from '@/models'
-import { GiDatabase } from 'react-icons/gi'
 import Link from 'next/link'
 import { PlusIcon } from '@heroicons/react/20/solid'
 
@@ -40,18 +39,6 @@ export const ProjectsList = () => {
                 </Link>
               </h1>
             )}
-            <div>
-              <p className='font-semibold text-sm'>Database</p>
-              <div className='bg-slate-300 text-gray-700 rounded'>
-                <div className='flex space-x-1 items-center'>
-                  <GiDatabase className='text-2xl' />
-                  <div>
-                    <p className='text-[14px]'>MongoDB</p>
-                    <p className='text-[9px]'>{project.db.region}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
 
             <Link href={`/project/${project._id}`}>
               <button className='bg-gradient-to-r from-indigo-500 to-blue-500 w-full rounded py-2'>

@@ -1,12 +1,7 @@
 import mongoose from 'mongoose'
-import { ProjectDbI } from './database'
 const projectSchema = new mongoose.Schema(
   {
     name: {
-      type: String,
-      required: true,
-    },
-    language: {
       type: String,
       required: true,
     },
@@ -21,10 +16,6 @@ const projectSchema = new mongoose.Schema(
         ref: 'Duty',
       },
     ],
-    db: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'ProjectDatabase',
-    },
   },
   { timestamps: true }
 )
@@ -38,7 +29,6 @@ export interface ProjectI {
   language: string
   user: string
   duties: string[]
-  db: ProjectDbI
   createdAt: Date
   updatedAt: Date
 }

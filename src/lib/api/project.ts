@@ -1,4 +1,4 @@
-import { Project, ProjectDb } from '@/models'
+import { Project } from '@/models'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { Session } from 'next-auth'
 import { createProjectDbUrl } from '../createProjectDbUrl'
@@ -14,10 +14,7 @@ export const getProjects = async (
     const p = await Project.findById(projectId)
     return res.status(200).json(p)
   }
-  const ps = await Project.find({ user: session.user.id }).populate({
-    path: 'db',
-    model: ProjectDb,
-  })
+  const ps = await Project.find({ user: session.user.id })
 
   return res.status(200).json(ps)
 }
@@ -32,14 +29,6 @@ export const createProject = async (
       ...req.body,
       user: session.user.id,
     })
-
-    const db = await ProjectDb.create({
-      project: p._id,
-      url: createProjectDbUrl(p._id),
-    })
-
-    p.db = db._id.toString()
-    await p.save()
 
     return res.status(201).json(p)
   } catch (error) {

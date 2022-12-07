@@ -89,33 +89,6 @@ export const NewProjectButton = () => {
                     label='Project Name'
                     placeholder='My awesome API endpoints'
                   />
-                  <TextInput
-                    register={register}
-                    name='language'
-                    error={errors.language}
-                    label='Programming Language'
-                    value={'javascript'}
-                    disabled={true}
-                  />
-                  <div className='flex space-x-2'>
-                    <TextInput
-                      register={register}
-                      name='db'
-                      error={errors.language}
-                      label='Database'
-                      value={'MongoDB'}
-                      disabled={true}
-                    />
-                    <TextInput
-                      register={register}
-                      name='region'
-                      error={errors.language}
-                      label='Region'
-                      value={'N. Virginia (us-east-1)'}
-                      disabled={true}
-                    />
-                  </div>
-
                   <div className='flex justify-end'>
                     <button
                       disabled={loading}
