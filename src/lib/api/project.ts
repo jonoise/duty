@@ -33,7 +33,15 @@ export const createProject = async (
   res: NextApiResponse,
   session: Session
 ) => {
+  const { slug } = req.body
+
+  if (!slug) return res.status(400).json({ error: 'Slug is required' })
+
   try {
+    const findBySlug = await Project.findOne({ slug })
+    if (findBySlug)
+      return res.status(400).json({ message: 'Slug already exists' })
+
     const p = await Project.create({
       ...req.body,
       user: session.user.id,

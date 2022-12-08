@@ -6,6 +6,10 @@ const projectSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    slug: {
+      type: String,
+      required: true,
+    },
     description: {
       type: String,
       required: true,
@@ -33,6 +37,7 @@ export interface ProjectI {
   name: string
   language: string
   user: string
+  slug: string
   duties: DutyI[]
   createdAt: Date
   updatedAt: Date

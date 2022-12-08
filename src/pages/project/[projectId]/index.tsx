@@ -1,4 +1,3 @@
-import { NewProjectButton, ProjectsList } from '@/components/dashboard'
 import DashboardLayout from '@/components/layouts/dashboard'
 import { CreateDutyButton } from '@/components/project'
 import fetcher from '@/lib/fetcher'
@@ -34,7 +33,9 @@ const ProjectDetails = () => {
         {project && (
           <div className='flex flex-col space-y-5'>
             {project.duties.map((duty) => (
-              <div className='flex flex-col space-y-5'>{duty.name}</div>
+              <div key={duty._id} className='flex flex-col space-y-5'>
+                {duty.name}
+              </div>
             ))}
           </div>
         )}

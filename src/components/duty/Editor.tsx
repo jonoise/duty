@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import React from 'react'
-import Filetree from './Filetree'
 import Output from './Output'
 import CodeMirror, { useCodeMirror } from '@uiw/react-codemirror'
 import { javascript } from '@codemirror/lang-javascript'
@@ -11,8 +10,9 @@ import { format } from 'prettier/standalone'
 import parserBabel from 'prettier/parser-babel'
 import { initialFile } from '../../data/duty'
 import EditorNavContainer from './EditorNavContainer'
+import { SiteContainer } from '../generics'
 
-const Editor = () => {
+const DutyEditor = () => {
   const [fn, setFn] = useState(initialFile)
   const [output, setOutput] = useState('')
 
@@ -59,57 +59,59 @@ const Editor = () => {
 
   return (
     <div>
-      <div className='flex flex-col h-[500px] rounded-lg font-mono color-white overflow-hidden'>
-        <div className={'flex'}>
-          {/* <Filetree /> */}
-          <div className={'flex flex-grow'}>
-            <div className='flex flex-col w-full '>
-              <EditorNavContainer>
-                <button
-                  onClick={async () => {
-                    const res = await fetch(`/api/test`, {
-                      method: 'POST',
-                      headers: { 'content-type': 'application/json' },
-                      body: JSON.stringify({ content: fn.content }),
-                    })
-                    const data = await res.json()
-                    setOutput(data)
-                  }}
-                >
-                  Enviar
-                </button>
-              </EditorNavContainer>
-              <CodeMirror
-                value={fn.content}
-                height='460px'
-                style={{ fontSize: '16px', width: '100%' }}
-                theme={xcodeDark}
-                extensions={[javascript({ jsx: true })]}
-                onChange={(a, b) => onChange(a, b)}
-              />
-            </div>
+      <SiteContainer>
+        <div className='flex flex-col h-[500px] rounded-lg font-mono color-white overflow-hidden'>
+          <div className={'flex'}>
+            {/* <Filetree /> */}
+            <div className={'flex flex-grow'}>
+              <div className='flex flex-col w-full '>
+                <EditorNavContainer>
+                  <button
+                    onClick={async () => {
+                      const res = await fetch(`/api/test`, {
+                        method: 'POST',
+                        headers: { 'content-type': 'application/json' },
+                        body: JSON.stringify({ content: fn.content }),
+                      })
+                      const data = await res.json()
+                      setOutput(data)
+                    }}
+                  >
+                    Enviar
+                  </button>
+                </EditorNavContainer>
+                <CodeMirror
+                  value={fn.content}
+                  height='460px'
+                  style={{ fontSize: '14px', width: '100%' }}
+                  theme={xcodeDark}
+                  extensions={[javascript({ jsx: true })]}
+                  onChange={(a, b) => onChange(a, b)}
+                />
+              </div>
 
-            <SampleSplitter
-              isDragging={isPluginDragging}
-              {...pluginDragBarProps}
-            />
-            <div
-              className={cn(
-                'flex-shrink-0 w-2/6',
-                isPluginDragging && 'dragging'
-              )}
-              style={{ width: pluginW }}
-            >
-              <Output output={output} />
+              <SampleSplitter
+                isDragging={isPluginDragging}
+                {...pluginDragBarProps}
+              />
+              <div
+                className={cn(
+                  'flex-shrink-0 w-2/6',
+                  isPluginDragging && 'dragging'
+                )}
+                style={{ width: pluginW }}
+              >
+                <Output output={output} />
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </SiteContainer>
     </div>
   )
 }
 
-export default Editor
+export default DutyEditor
 
 const SampleSplitter = ({
   id = 'drag-bar',

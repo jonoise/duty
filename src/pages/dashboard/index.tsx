@@ -8,7 +8,6 @@ import { authOptions } from '../api/auth/[...nextauth]'
 const DashboardPage = () => {
   return (
     <DashboardLayout title='Projects' action={<NewProjectButton />}>
-      {/* Write a beautiful dashboard to write serverless functions with tailwind */}
       <div className='py-5 space-y-5'>
         <div className='w-full h-0.5 bg-zinc-700' />
         <ProjectsList />

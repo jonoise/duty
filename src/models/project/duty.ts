@@ -17,6 +17,10 @@ const dutySchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    endpoint: {
+      type: String,
+      required: true,
+    },
     project: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Project',

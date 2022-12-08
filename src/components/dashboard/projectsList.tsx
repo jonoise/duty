@@ -20,7 +20,19 @@ export const ProjectsList = () => {
           <div className='py-5'>
             <h1 className='font-bold'>
               No projects yet,{' '}
-              <span className='underline text-orange-500'>create one</span>.
+              <Modal
+                ActionComponent={({ onOpen }) => (
+                  <span
+                    onClick={onOpen}
+                    className='underline text-orange-500 cursor-pointer'
+                  >
+                    create one
+                  </span>
+                )}
+              >
+                {({ setIsOpen }) => <CreateProjectForm setIsOpen={setIsOpen} />}
+              </Modal>
+              .
             </h1>
           </div>
         )}

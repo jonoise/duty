@@ -5,7 +5,7 @@ import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { ExclamationCircleIcon } from '@heroicons/react/20/solid'
 interface InputProps extends React.HTMLProps<HTMLTextAreaElement> {
   label: string
-  register: UseFormRegister<FieldValues>
+  register: UseFormRegister<any>
   name: string
   error: any
   rules?: any

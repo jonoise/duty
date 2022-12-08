@@ -6,7 +6,7 @@ import { ExclamationCircleIcon } from '@heroicons/react/20/solid'
 interface InputProps extends React.HTMLProps<HTMLInputElement> {
   type?: string
   label: string
-  register: UseFormRegister<FieldValues>
+  register: UseFormRegister<any>
   name: string
   error: any
   rules?: any
@@ -30,14 +30,14 @@ export const TextInput: FC<InputProps> = (props) => {
   } = props
 
   return (
-    <div ref={inputParent}>
+    <div ref={inputParent} className='flex-1'>
       <label
         htmlFor={name}
         className={clsx('block text-sm font-medium', labelClassName)}
       >
         {label}
       </label>
-      <div className='relative mt-1 rounded-md shadow-sm'>
+      <div className='relative mt-1 rounded shadow-sm'>
         <input
           {...register(name, rules)}
           type={type || 'text'}
@@ -47,7 +47,7 @@ export const TextInput: FC<InputProps> = (props) => {
             disabled
               ? 'bg-gray-700 text-gray-400 cursor-not-allowed'
               : 'text-gray-800',
-            'block w-full rounded-md border-blue-300 pr-10 placeholder-zinc-300 sm:text-sm ',
+            'block w-full rounded border-blue-300 pr-10 placeholder-zinc-300 sm:text-sm ',
             className
           )}
           {...rest}
