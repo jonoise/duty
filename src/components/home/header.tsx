@@ -3,6 +3,7 @@ import Highlight, { defaultProps } from 'prism-react-renderer'
 import theme from 'prism-react-renderer/themes/dracula'
 import clsx from 'clsx'
 import { dutyFnContent } from '@/data/duty'
+import Image from 'next/image'
 
 function TrafficLightsIcon(props: any) {
   return (
@@ -15,28 +16,63 @@ function TrafficLightsIcon(props: any) {
 }
 
 const codeLang = 'javascript'
-const codeSnippet = dutyFnContent
+const codeSnippet = `const { MongoClient } = mongodb
+
+module.exports = async function insertDuty() {
+  const client = new MongoClient(process.env.MONGODB_URI);
+  await client.connect();
+
+  const db = client.db('project');
+  const collection = db.collection('duty');
+  const result = await collection.insertOne({ name: 'Duty Added 🚀' });
+  
+  return result
+}`
 
 export const HomeHeader = () => {
   return (
-    <div className='flex flex-col w-full py-20 lg:flex-row lg:items-center space-y-5'>
+    <div className='flex flex-col w-full py-20 lg:flex-row lg:items-center space-y-5 h-[70vh]'>
       <div className='lg:w-1/2 space-y-5'>
-        <h1 className='text-9xl font-bold'>Duty</h1>
-        <p className='inline bg-gradient-to-r from-indigo-200 via-sky-400 to-indigo-200 bg-clip-text font-display text-2xl md:text-5xl  tracking-tight text-transparent'>
-          Automate everything from your computer to run in the cloud.{' '}
-        </p>
-        <p className='text-xl'>
-          Get your duties done, everyday, 365 days a year. NON STOP!
-        </p>
+        <h1 className='text-6xl font-bold'>
+          Serverless <br /> micro-backends.
+        </h1>
+        <div className='flex w-full items-center'>
+          <div className='flex space-x-1.5 items-center'>
+            <h1 className='text-xl font-bold'>
+              Build for <span className='text-yellow-300'>Javascript </span>{' '}
+            </h1>
+            <Image
+              alt='Javascript Logo'
+              src={'/js-logo.svg'}
+              width={25}
+              height={25}
+            />
+            <h1 className='text-xl font-bold'>
+              and <span className='text-green-600'>MongoDB</span>
+            </h1>
+            <Image
+              alt='MongoDB Logo'
+              src={'/mongo-logo.svg'}
+              width={35}
+              height={45}
+              style={{ marginLeft: -3, marginRight: -4 }}
+            />
+            <h1 className='text-xl font-bold'>services.</h1>
+          </div>
+        </div>
+        <p className='text-xl'>Create your own micro-backend in seconds.</p>
 
-        <div className='flex space-x-2 mt-4'>
-          <button className='bg-gradient-to-r from-blue-500 to-pink-600 text-white m-0 p-0 rounded-full flex items-center px-5 py-2 text-sm font-bold'>
-            KNOW MORE
+        <div className='flex space-x-4 mt-4'>
+          <button className='bg-pink-600 text-white m-0 p-0 rounded flex items-center px-5 py-2 text-sm font-bold'>
+            TRY DUTY
+          </button>
+          <button className='bg-pink-600 text-white m-0 p-0 rounded flex items-center px-5 py-2 text-sm font-bold'>
+            CREATE ACCOUNT
           </button>
         </div>
       </div>
-      <div className='lg:w-1/2 rounded-xl bg-gradient-to-r from-pink-800 to-indigo-900 p-0.5 h-min'>
-        <TrafficLightsIcon className='h-2.5 w-auto stroke-yellow-500/60 mx-2 my-2' />
+      <div className='lg:w-1/2 rounded-xl bg-gradient-to-t from-rose-600 to-pink-600 p-0.5 h-min'>
+        <TrafficLightsIcon className='h-2.5 w-auto  fill-rose-700 mx-2 my-2' />
         <div className='p-4  overflow-scroll rounded-b-xl bg-zinc-900 '>
           <div className='bg-zinc-800 w-min px-4 py-1 rounded-full mb-2 text-xs'>
             <p>duty.js</p>

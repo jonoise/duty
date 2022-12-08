@@ -4,6 +4,13 @@ import MainLayout from '@/components/layouts/main'
 import { HomeHeader } from '@/components/home'
 import createGlobe from 'cobe'
 import Image from 'next/image'
+import {
+  Battery100Icon,
+  BoltIcon,
+  CheckIcon,
+  ServerIcon,
+  ServerStackIcon,
+} from '@heroicons/react/24/solid'
 
 const HomePage = () => {
   const canvasRef = useRef(null)
@@ -22,7 +29,7 @@ const HomePage = () => {
         mapBrightness: 7,
         baseColor: [0.9, 0.1, 0.3],
         markerColor: [0.1, 0.8, 1],
-        glowColor: [0, 0, 0.2],
+        glowColor: [0.4, 0, 0.2],
         markers: [
           // longitude latitude
           { location: [37.7595, -122.4367], size: 0.05 },
@@ -89,15 +96,54 @@ const HomePage = () => {
           />
         </div>
         <div className='relative flex-1 space-y-5 pt-52 px-2'>
-          <h1 className='text-7xl font-bold z-40'>SPEED IS KEY</h1>
-          <p className='z-10 inline bg-gradient-to-r from-indigo-200 via-sky-400 to-indigo-200 bg-clip-text font-display text-2xl md:text-2xl  tracking-tight text-transparent'>
-            Built on cutting-edge serverless technology, Duty can withstand any
-            traffic spike, with automatic failover and global replication of
-            assets.
+          <h1 className='text-7xl font-bold z-40 py-4'>SPEED IS KEY</h1>
+          {cobePerks.map((perk) => (
+            <div key={perk.id} className='flex space-x-2 items-center'>
+              <div className='p-2 bg-gray-900 border border-pink-600 rounded'>
+                <perk.Icon className='w-5 h-5 text-yellow-300' />
+              </div>
+              <p className='z-10 inline font-display text-2xl tracking-tight'>
+                {perk.title}
+              </p>
+            </div>
+          ))}
+          <div className='flex space-x-4 mt-4'>
+            <button className='bg-pink-600 text-white m-0 p-0 rounded flex items-center px-5 py-2 text-sm font-bold'>
+              TRY DUTY
+            </button>
+            <button className='bg-pink-600 text-white m-0 p-0 rounded flex items-center px-5 py-2 text-sm font-bold'>
+              CREATE ACCOUNT
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div className='flex p-20 py-32 bg-white w-full space-x-6'>
+        <video autoPlay muted className='w-[47%] -skew-y-12 rounded-lg'>
+          <source src='/duty.mp4' type='video/mp4' className='rounded-t-lg' />
+        </video>
+        <div className='flex-1 space-y-5 px-2 text-black'>
+          <h1 className='text-7xl font-bold z-40'>
+            Focus on your duties, not on your tools.
+          </h1>
+          <p>
+            We provide a just-write-and-deploy experience, so you can focus on
+            on your duties and not on your tools.
           </p>
-          <p className='text-xl'>
-            Get your duties done, everyday, 365 days a year. NON STOP!
-          </p>
+        </div>
+      </div>
+      <div className='h-60 bg-pink-500 px-4'>
+        <div className='flex flex-col justify-center items-center h-full space-y-4'>
+          <h1 className='text-7xl font-bold z-40 text-white'>
+            Since we launched
+          </h1>
+          <p className='text-2xl'>we have served over {'42.000'} requests</p>
+        </div>
+      </div>
+      <div className='bg-pink-600 h-10 flex items-center px-40'>
+        <div className='w-full flex justify-between'>
+          <p>Duty™</p>
+          <p>Duty™</p>
         </div>
       </div>
     </MainLayout>
@@ -105,3 +151,27 @@ const HomePage = () => {
 }
 
 export default HomePage
+
+const cobePerks = [
+  {
+    id: 1,
+    Icon: BoltIcon,
+    title: 'Built on cutting-edge serverless technology.',
+  },
+  {
+    id: 2,
+    Icon: Battery100Icon,
+    title: 'Designed to handle large amounts of traffic.',
+  },
+  {
+    id: 3,
+    Icon: ServerStackIcon,
+    title: `Don't worry about scaling, patching, or maintaining your infrastructure.`,
+  },
+  {
+    id: 4,
+    Icon: CheckIcon,
+    title:
+      'Start free, then pay only for what you use with per-request pricing.',
+  },
+]

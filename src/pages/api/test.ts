@@ -10,12 +10,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     sandbox: { fetch },
     require: {
       external: true,
-      context: 'sandbox',
+      import: ['mongodb', 'axios', 'lodash'],
       builtin: ['*'],
-      root: './',
-    },
-    env: {
-      NODE_ENV: 'sandbox',
     },
   })
 

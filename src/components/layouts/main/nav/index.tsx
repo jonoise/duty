@@ -24,14 +24,14 @@ const MainLayoutNavbar = () => {
             {session ? (
               <button
                 onClick={() => signOut()}
-                className='bg-gradient-to-r from-emerald-400 to-sky-300 text-zinc-900 m-0 p-0 rounded-full flex items-center px-5 py-2 text-sm font-bold'
+                className='border border-pink-600 m-0 p-0 rounded-full flex items-center px-5 py-2 text-sm font-bold'
               >
                 Logout
               </button>
             ) : (
               <Link
                 href='/signup'
-                className='bg-gradient-to-r from-emerald-400 to-sky-300 text-zinc-900 m-0 p-0 rounded-full flex items-center px-5 py-2 text-sm font-bold'
+                className='bg-pink-600 m-0 p-0 rounded-full flex items-center px-5 py-2 text-sm font-bold'
               >
                 Sign up
               </Link>
