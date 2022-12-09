@@ -6,7 +6,7 @@ export const NewProjectButton = () => {
     <>
       <Modal
         ActionComponent={({ onOpen }) => (
-          <button onClick={onOpen} className='px-5 py-1 bg-sky-600 rounded'>
+          <button onClick={onOpen} className='px-5 py-1 bg-pink-600 rounded'>
             Create project
           </button>
         )}

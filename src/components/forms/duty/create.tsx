@@ -72,7 +72,7 @@ export const CreateDutyForm: FC<Props> = (props) => {
         <button
           disabled={loading}
           type='button'
-          className='px-5 py-1 bg-sky-600 rounded'
+          className='px-5 py-1 bg-pink-600 rounded'
           onClick={() => setIsOpen && setIsOpen(false)}
         >
           Cancel
@@ -80,7 +80,7 @@ export const CreateDutyForm: FC<Props> = (props) => {
         <button
           disabled={loading}
           type='submit'
-          className='ml-2 px-5 py-1 bg-sky-600 rounded'
+          className='ml-2 px-5 py-1 bg-pink-600 rounded'
         >
           {loading ? 'Creating...' : 'Create'}
         </button>

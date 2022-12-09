@@ -42,9 +42,7 @@ export const DutyInputs = () => {
       <Toaster />
       <SiteContainer>
         <div className='space-y-2 pb-4'>
-          <h1 className='text-4xl font-bold text-sky-400 pt-10'>
-            Duty Details
-          </h1>
+          <h1 className='text-4xl font-bold pt-10'>Duty Details</h1>
         </div>
         <div className='flex space-x-5'>
           <form className='flex-1 space-y-4' onSubmit={handleSubmit(onsubmit)}>
@@ -84,23 +82,23 @@ export const DutyInputs = () => {
             <div>
               <label className='font-medium text-sm'>Endpoint:</label>
               <div className='flex justify-between items-center px-4 py-1.5 bg-zinc-800 rounded text-xs'>
-                <p className='text-sky-300'>{endpoint}</p>
+                <p className='text-green-500'>{endpoint}</p>
                 <button
                   onClick={() => {
                     navigator.clipboard.writeText(endpoint)
                     toast.success('Copied to clipboard')
                   }}
-                  className='bg-sky-600 p-1 rounded text-xs'
+                  className='bg-pink-600 p-1 rounded text-xs'
                 >
                   <ClipboardDocumentCheckIcon className='w-5 h-5' />
                 </button>
               </div>
             </div>
             <div className='flex space-x-4'>
-              <button className='w-full bg-sky-600 py-4 rounded'>
+              <button className='w-full bg-pink-600 py-4 rounded'>
                 Test function
               </button>
-              <button className='w-full bg-sky-600 py-4 rounded'>
+              <button className='w-full bg-pink-600 py-4 rounded'>
                 Save function
               </button>
             </div>

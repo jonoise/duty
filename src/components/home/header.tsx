@@ -4,6 +4,7 @@ import theme from 'prism-react-renderer/themes/dracula'
 import clsx from 'clsx'
 import { dutyFnContent } from '@/data/duty'
 import Image from 'next/image'
+import Link from 'next/link'
 
 function TrafficLightsIcon(props: any) {
   return (
@@ -63,9 +64,11 @@ export const HomeHeader = () => {
         <p className='text-xl'>Create your own micro-backend in seconds.</p>
 
         <div className='flex space-x-4 mt-4'>
-          <button className='bg-pink-600 text-white m-0 p-0 rounded flex items-center px-5 py-2 text-sm font-bold'>
-            TRY DUTY
-          </button>
+          <Link href={`/demo`}>
+            <button className='bg-pink-600 text-white m-0 p-0 rounded flex items-center px-5 py-2 text-sm font-bold'>
+              TRY DUTY
+            </button>
+          </Link>
           <button className='bg-pink-600 text-white m-0 p-0 rounded flex items-center px-5 py-2 text-sm font-bold'>
             CREATE ACCOUNT
           </button>

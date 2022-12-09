@@ -7,7 +7,7 @@ export const CreateDutyButton = () => {
 
   return (
     <Link href={`/project/${router.query.projectId}/duty/new`}>
-      <button className='px-5 py-1 bg-sky-600 rounded'>Create duty</button>
+      <button className='px-5 py-1 bg-pink-600 rounded'>Create duty</button>
     </Link>
   )
 }

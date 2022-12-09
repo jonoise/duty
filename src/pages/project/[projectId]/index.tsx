@@ -1,4 +1,5 @@
 import DashboardLayout from '@/components/layouts/dashboard'
+import { ProjectLayout } from '@/components/layouts/project'
 import { CreateDutyButton } from '@/components/project'
 import fetcher from '@/lib/fetcher'
 import { ProjectI } from '@/models'
@@ -16,7 +17,7 @@ const ProjectDetails = () => {
   )
 
   return (
-    <DashboardLayout
+    <ProjectLayout
       title={!project ? 'Loading project...' : `${project?.name}`}
       action={<CreateDutyButton />}
     >
@@ -40,7 +41,7 @@ const ProjectDetails = () => {
           </div>
         )}
       </div>
-    </DashboardLayout>
+    </ProjectLayout>
   )
 }
 
