@@ -6,6 +6,8 @@ import toast from 'react-hot-toast'
 import { mutate } from 'swr'
 import { TextInput, TextareaInput } from '@/components/forms'
 import slugify from '@sindresorhus/slugify'
+import { useRouter } from 'next/router'
+import { ProjectI } from '@/models'
 
 interface Props {
   setIsOpen?: (isOpen: boolean) => void
@@ -13,6 +15,7 @@ interface Props {
 
 export const CreateProjectForm: FC<Props> = (props) => {
   const { setIsOpen } = props
+  const router = useRouter()
   let [loading, setLoading] = useState(false)
   let [slugifyInput, setSlugifyInput] = useState('')
 
@@ -38,27 +41,32 @@ export const CreateProjectForm: FC<Props> = (props) => {
 
   const onSubmit = async (data: FieldValues) => {
     setLoading(true)
-    try {
-      const res = await ky
-        .get(`/api/internal/more-projects`)
-        .json<{ canCreateMoreProjects: boolean }>()
-      if (!res.canCreateMoreProjects) {
-        toast.error('You need to upgrade your plan to create more projects')
-        setLoading(false)
-        return
-      }
-    } catch (error) {
-      console.log(error)
-    }
+    // try {
+    //   const res = await ky
+    //     .get(`/api/internal/more-projects`)
+    //     .json<{ canCreateMoreProjects: boolean }>()
+    //   if (!res.canCreateMoreProjects) {
+    //     toast.error('You need to upgrade your plan to create more projects')
+    //     setLoading(false)
+    //     return
+    //   }
+    // } catch (error) {
+    //   console.log(error)
+    // }
 
     try {
-      await ky.post('/api/internal/project', {
-        json: { ...data, userId: session?.user.id },
-      })
+      const res = await ky
+        .post('/api/internal/project', {
+          json: { ...data, userId: session?.user.id },
+        })
+        .json<ProjectI>()
+
       toast.success('Project created successfully')
       setIsOpen && setIsOpen(false)
-    } catch (error) {
-      console.log(error)
+      router.push(`/project/${res._id}`)
+    } catch (error: any) {
+      const res = await error.response.json()
+      toast.error(res.message)
     }
     setLoading(false)
     mutate('/api/internal/project')

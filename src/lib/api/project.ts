@@ -1,4 +1,4 @@
-import { Duty, Project } from '@/models'
+import { Duty, Project, ProjectEnv } from '@/models'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { Session } from 'next-auth'
 
@@ -44,6 +44,11 @@ export const createProject = async (
 
     const p = await Project.create({
       ...req.body,
+      user: session.user.id,
+    })
+
+    await ProjectEnv.create({
+      project: p._id,
       user: session.user.id,
     })
 

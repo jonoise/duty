@@ -71,7 +71,7 @@ const DutyEditor = () => {
                       const res = await fetch(`/api/test`, {
                         method: 'POST',
                         headers: { 'content-type': 'application/json' },
-                        body: JSON.stringify({ content: fn.content }),
+                        body: JSON.stringify({ code: fn.content }),
                       })
                       const data = await res.json()
                       setOutput(data)

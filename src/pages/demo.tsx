@@ -1,5 +1,6 @@
-import React, { FC, useState } from 'react'
-import Editor from '../components/duty/Editor'
+import { DemoEditor, DemoOutput } from '@/components/demo'
+import { useDemoData } from '@/stores/useDemoData'
+import React, { FC } from 'react'
 import { GiAbstract089 } from 'react-icons/gi'
 
 interface DutyLayoutProps {
@@ -9,6 +10,24 @@ interface DutyLayoutProps {
 }
 
 const DutyLayout: FC<DutyLayoutProps> = (props): JSX.Element => {
+  const data = useDemoData()
+
+  const onSubmit = async () => {
+    data.setOutputLoading(true)
+    const res = await fetch(`/api/test`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ code: data.code }),
+    })
+    if (res.ok) {
+      const json = await res.json()
+      data.setOutput(JSON.stringify(json.result, null, 2))
+    } else {
+      data.setOutput('Error')
+    }
+    data.setOutputLoading(false)
+  }
+
   return (
     <div className='bg-zinc-900 w-full h-screen text-white '>
       <nav className='w-full px-10'>
@@ -36,8 +55,19 @@ const DutyLayout: FC<DutyLayoutProps> = (props): JSX.Element => {
           </div>
         </div>
       </nav>
-      <div className=' px-10'>
-        <Editor />
+      <div className='px-10'>
+        <div className='flex'>
+          <div className='flex-1'>
+            <DemoEditor
+              code={data.code}
+              setCode={data.setCode}
+              onSubmit={onSubmit}
+            />
+          </div>
+          <div className='w-2/5'>
+            <DemoOutput output={data.output} />
+          </div>
+        </div>
       </div>
     </div>
   )

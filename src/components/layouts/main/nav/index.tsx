@@ -21,6 +21,16 @@ const MainLayoutNavbar = () => {
             >
               Pricing
             </Link>
+            {session && (
+              <Link href={`/dashboard`}>
+                <button
+                  onClick={() => signOut()}
+                  className='border border-pink-600 m-0 p-0 rounded-full flex items-center px-5 py-2 text-sm font-bold'
+                >
+                  Dashboard
+                </button>
+              </Link>
+            )}
             {session ? (
               <button
                 onClick={() => signOut()}
