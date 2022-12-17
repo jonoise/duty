@@ -3,3 +3,11 @@ export const DemoCode = `module.exports = async function duty(){
   const data = await res.json()
   return data
 }`
+
+export const posibleError = {
+  message: 'Review your return statement',
+}
+
+export const responseError = {
+  message: 'Review your return statement',
+}

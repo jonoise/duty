@@ -13,6 +13,7 @@ interface Props {
 
 export const DemoEditor: FC<Props> = (props) => {
   const { code, setCode, onSubmit } = props
+
   useEffect(() => {
     function clickedSave(e: KeyboardEvent) {
       let charCode = String.fromCharCode(e.which).toLowerCase()
@@ -29,6 +30,7 @@ export const DemoEditor: FC<Props> = (props) => {
         }
       }
     }
+
     async function clickedSubmit(e: KeyboardEvent) {
       let charCode = String.fromCharCode(e.which).toLowerCase()
       if ((e.ctrlKey || e.metaKey) && charCode === 'd') {
@@ -53,6 +55,7 @@ export const DemoEditor: FC<Props> = (props) => {
       height='460px'
       style={{ fontSize: '14px', width: '100%' }}
       extensions={[javascript()]}
+      onChange={(value, viewUpdate) => setCode(value)}
     />
   )
 }

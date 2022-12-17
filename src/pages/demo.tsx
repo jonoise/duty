@@ -1,4 +1,5 @@
 import { DemoEditor, DemoOutput } from '@/components/demo'
+import { posibleError } from '@/data/demo'
 import { useDemoData } from '@/stores/useDemoData'
 import React, { FC } from 'react'
 import { GiAbstract089 } from 'react-icons/gi'
@@ -21,9 +22,13 @@ const DutyLayout: FC<DutyLayoutProps> = (props): JSX.Element => {
     })
     if (res.ok) {
       const json = await res.json()
-      data.setOutput(JSON.stringify(json.result, null, 2))
+      if (!json.result) {
+        data.setOutput(JSON.stringify(posibleError, null, 2))
+      } else {
+        data.setOutput(JSON.stringify(json.result, null, 2))
+      }
     } else {
-      data.setOutput('Error')
+      data.setOutput(JSON.stringify(await res.json(), null, 2))
     }
     data.setOutputLoading(false)
   }
@@ -56,6 +61,11 @@ const DutyLayout: FC<DutyLayoutProps> = (props): JSX.Element => {
         </div>
       </nav>
       <div className='px-10'>
+        <div className=''>
+          <button onClick={onSubmit}>
+            <span>Enviar</span>
+          </button>
+        </div>
         <div className='flex'>
           <div className='flex-1'>
             <DemoEditor
