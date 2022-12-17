@@ -1,6 +1,5 @@
-import DashboardLayout from '@/components/layouts/dashboard'
 import { ProjectLayout } from '@/components/layouts/project'
-import { CreateDutyButton } from '@/components/project'
+import { CreateDutyButton, SearchBar } from '@/components/project'
 import fetcher from '@/lib/fetcher'
 import { ProjectI } from '@/models'
 import { useRouter } from 'next/router'
@@ -16,15 +15,17 @@ const ProjectDetails = () => {
     fetcher
   )
 
+  const [duties, setDuties] = React.useState<ProjectI['duties']>([])
+
   return (
-    <ProjectLayout
-      title={!project ? 'Loading project...' : `${project?.name}`}
-      action={<CreateDutyButton />}
-    >
+    <ProjectLayout>
       <div className='py-5 space-y-5'>
-        <div className='w-full h-0.5 bg-zinc-700' />
+        <div className='w-full flex space-x-4'>
+          <SearchBar />
+          <CreateDutyButton />
+        </div>
         {error && <div>Failed to load</div>}
-        {!!project?.duties && (
+        {duties.length === 0 && (
           <div>
             <p>
               No duties found for this project. Add a new duty to get started.
@@ -33,7 +34,7 @@ const ProjectDetails = () => {
         )}
         {project && (
           <div className='flex flex-col space-y-5'>
-            {project.duties.map((duty) => (
+            {duties.map((duty) => (
               <div key={duty._id} className='flex flex-col space-y-5'>
                 {duty.name}
               </div>

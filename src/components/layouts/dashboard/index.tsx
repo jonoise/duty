@@ -96,7 +96,7 @@ const DashboardLayout: FC<PropsWithChildren & Props> = (props) => {
                   <div className='h-0 flex-1 overflow-y-auto pt-5 pb-4'>
                     <div className='flex flex-shrink-0 items-center px-4'>
                       <div className='flex space-x-2 items-center text-white'>
-                        <Link href={'/'}>
+                        <Link href={'/'} passHref>
                           <GiAbstract089 />
                           <h1 className='text-xl font-extrabold'>Duty</h1>
                         </Link>
