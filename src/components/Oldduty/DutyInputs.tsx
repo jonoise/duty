@@ -18,16 +18,22 @@ interface DutyInputsProps {
 
 export const DutyInputs: FC<DutyInputsProps> = (props) => {
   const { testFunction } = props
-  const code = useDemoData((s) => s.code)
+
   const { data: session } = useSession()
+
   const router = useRouter()
+
+  const code = useDemoData((s) => s.code)
+
   const {
     register,
     handleSubmit,
     formState: { errors },
     watch,
   } = useForm({})
+
   const slug = watch('slug')
+
   const [endpoint, setEndpoint] = React.useState('')
 
   const { data: project } = useSWR<ProjectI>(
@@ -47,6 +53,7 @@ export const DutyInputs: FC<DutyInputsProps> = (props) => {
   const onsubmit = async (data: any) => {
     const body = {
       ...data,
+      slug: slugify(data.slug),
       code,
       endpoint,
       project: project?._id,

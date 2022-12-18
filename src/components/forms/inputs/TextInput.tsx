@@ -11,6 +11,7 @@ interface InputProps extends React.HTMLProps<HTMLInputElement> {
   error: any
   rules?: any
   className?: string
+  parentClassName?: string
   labelClassName?: string
 }
 
@@ -26,11 +27,12 @@ export const TextInput: FC<InputProps> = (props) => {
     labelClassName,
     rules,
     disabled,
+    parentClassName,
     ...rest
   } = props
 
   return (
-    <div ref={inputParent} className=''>
+    <div ref={inputParent} className={parentClassName}>
       <label
         htmlFor={name}
         className={clsx('block text-sm font-medium', labelClassName)}
@@ -44,11 +46,12 @@ export const TextInput: FC<InputProps> = (props) => {
           name={name}
           id={name}
           className={clsx(
-            disabled
+            className
+              ? className
+              : disabled
               ? 'bg-gray-700 text-gray-400 cursor-not-allowed'
               : 'text-gray-800',
-            'block w-full rounded border-blue-300 pr-10 placeholder-zinc-300 sm:text-sm ',
-            className
+            'block w-full rounded pr-10 placeholder-zinc-300 sm:text-sm'
           )}
           {...rest}
         />

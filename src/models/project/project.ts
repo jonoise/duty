@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
 import { DutyI } from './duty'
+import { ProjectEnvI } from './env'
 const projectSchema = new mongoose.Schema(
   {
     name: {
@@ -19,6 +20,12 @@ const projectSchema = new mongoose.Schema(
       ref: 'User',
       required: true,
     },
+    env: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'ProjectEnv',
+      },
+    ],
     duties: [
       {
         type: mongoose.Schema.Types.ObjectId,
@@ -37,6 +44,7 @@ export interface ProjectI {
   name: string
   language: string
   user: string
+  env: ProjectEnvI[]
   slug: string
   duties: DutyI[]
   createdAt: Date

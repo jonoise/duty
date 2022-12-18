@@ -1,4 +1,4 @@
-import { getEnv, updateEnv } from '@/lib/api/env'
+import { createEnv, getEnv, updateEnv } from '@/lib/api/env'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { unstable_getServerSession } from 'next-auth'
 import { authOptions } from '../auth/[...nextauth]'
@@ -13,6 +13,8 @@ export default async function env(req: NextApiRequest, res: NextApiResponse) {
   switch (req.method) {
     case 'GET':
       return getEnv(req, res, session)
+    case 'POST':
+      return createEnv(req, res, session)
     case 'PUT':
       return updateEnv(req, res, session)
     default:

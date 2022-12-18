@@ -19,7 +19,10 @@ export const ProjectLayoutNavbar = () => {
         </div>
         <div className='flex space-x-4 text-zinc-500 text-sm'>
           {projectNavigation.map((item) => (
-            <Link href={item.href(router.query.projectId as string)}>
+            <Link
+              key={item.id}
+              href={item.href(router.query.projectId as string)}
+            >
               {item.name}
             </Link>
           ))}

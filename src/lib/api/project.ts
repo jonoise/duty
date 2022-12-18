@@ -13,10 +13,18 @@ export const getProjects = async (
       const p = await Project.findOne({
         _id: projectId,
         user: session.user.id,
-      }).populate({
-        path: 'duties',
-        model: Duty,
       })
+        .populate({
+          path: 'duties',
+          model: Duty,
+        })
+        .populate({
+          path: 'env',
+          model: ProjectEnv,
+          options: {
+            sort: { createdAt: -1 },
+          },
+        })
       if (!p) return res.status(404).json({ error: 'Project not found' })
       return res.status(200).json(p)
     }
@@ -24,6 +32,7 @@ export const getProjects = async (
 
     return res.status(200).json(ps)
   } catch (error) {
+    console.log(error)
     return res.status(500).json({ error })
   }
 }

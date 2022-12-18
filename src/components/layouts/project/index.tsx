@@ -10,7 +10,7 @@ export const ProjectLayout: FC<PropsWithChildren> = (props) => {
         <div className='flex flex-col'>
           <div className='flex flex-col flex-1 overflow-hidden'>
             <main className='flex-1 overflow-x-hidden overflow-y-auto'>
-              <div className='mx-auto'>{props.children}</div>
+              <div className='py-5 space-y-5 mx-auto'>{props.children}</div>
             </main>
           </div>
         </div>
