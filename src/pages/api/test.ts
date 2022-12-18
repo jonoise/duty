@@ -18,8 +18,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           builtin: ['*'],
         },
       })
-      let b = vm.run(code, 'vm.js')
-      let result = await b()
+      let duty = vm.run(code, 'vm.js')
+      let result = await duty()
       return res.status(200).json({ result, __filename })
     } catch (error: any) {
       return res.status(400).json({ error: error.message })

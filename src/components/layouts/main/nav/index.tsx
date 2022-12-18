@@ -21,7 +21,7 @@ const MainLayoutNavbar = () => {
             </Link>
             {session && (
               <Link href={`/dashboard`}>
-                <button className='border border-pink-600 m-0 p-0 rounded-full flex items-center px-5 py-2 text-sm font-bold'>
+                <button className='border border-blue-600 m-0 p-0 rounded-full flex items-center px-5 py-2 text-sm font-bold'>
                   Dashboard
                 </button>
               </Link>
@@ -29,14 +29,14 @@ const MainLayoutNavbar = () => {
             {session ? (
               <button
                 onClick={() => signOut()}
-                className='border border-pink-600 m-0 p-0 rounded-full flex items-center px-5 py-2 text-sm font-bold'
+                className='border border-blue-600 m-0 p-0 rounded-full flex items-center px-5 py-2 text-sm font-bold'
               >
                 Logout
               </button>
             ) : (
               <Link
                 href='/signup'
-                className='bg-pink-600 m-0 p-0 rounded-full flex items-center px-5 py-2 text-sm font-bold'
+                className='bg-blue-600 m-0 p-0 rounded-full flex items-center px-5 py-2 text-sm font-bold'
               >
                 Sign up
               </Link>

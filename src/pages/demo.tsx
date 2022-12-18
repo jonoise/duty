@@ -1,4 +1,4 @@
-import { DemoEditor, DemoOutput } from '@/components/demo'
+import { DemoEditor, DemoOutput } from '@/components/duty'
 import { posibleError } from '@/data/demo'
 import { useDemoData } from '@/stores/useDemoData'
 import React, { FC } from 'react'

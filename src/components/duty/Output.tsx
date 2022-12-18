@@ -1,43 +1,31 @@
-import ReactCodeMirror from '@uiw/react-codemirror'
-import React, { FC, useEffect, useState } from 'react'
-import { format } from 'prettier/standalone'
-import parserBabel from 'prettier/parser-babel'
+import { useDemoData } from '@/stores/useDemoData'
 import { xcodeDark } from '@uiw/codemirror-theme-xcode'
-import { json } from '@codemirror/lang-json'
-import EditorNavContainer from './EditorNavContainer'
+import ReactCodeMirror from '@uiw/react-codemirror'
+import React, { FC } from 'react'
 
-const Output: FC<{ output: string }> = (props) => {
-  const [prettifiedOutput, setPrettifiedOutput] = useState(`{
-    "data": "Hello World"
-  }`)
-
-  useEffect(() => {
-    try {
-      const f = format(JSON.stringify(props.output, null, 2), {
-        parser: 'json',
-        plugins: [parserBabel],
-      })
-      setPrettifiedOutput(f)
-    } catch (error) {
-      console.log(error)
-    }
-  }, [props.output])
-
-  return (
-    <div>
-      <EditorNavContainer>
-        <p>Response</p>
-      </EditorNavContainer>
-
-      <ReactCodeMirror
-        theme={xcodeDark}
-        lang={'json'}
-        readOnly={true}
-        height='540px'
-        value={prettifiedOutput}
-      />
-    </div>
-  )
+interface Props {
+  output: string
 }
 
-export default Output
+export const DemoOutput: FC<Props> = (props) => {
+  const { output } = props
+
+  const data = useDemoData()
+
+  return data.outputLoading ? (
+    <div className='h-[460px] w-full bg-zinc-800'>
+      <div className='flex justify-center items-center h-full'>
+        <div className='animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-gray-100' />
+      </div>
+    </div>
+  ) : (
+    <ReactCodeMirror
+      value={output}
+      theme={xcodeDark}
+      height='460px'
+      style={{ fontSize: '14px' }}
+      lang={'json'}
+      readOnly={true}
+    />
+  )
+}

@@ -30,7 +30,7 @@ export const TextInput: FC<InputProps> = (props) => {
   } = props
 
   return (
-    <div ref={inputParent} className='flex-1'>
+    <div ref={inputParent} className=''>
       <label
         htmlFor={name}
         className={clsx('block text-sm font-medium', labelClassName)}

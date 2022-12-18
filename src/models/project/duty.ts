@@ -9,7 +9,7 @@ const dutySchema = new mongoose.Schema(
     description: {
       type: String,
     },
-    snippet: {
+    code: {
       type: String,
       required: true,
     },
@@ -41,8 +41,9 @@ export interface DutyI {
   _id: string
   name: string
   description: string
-  snippet: string
+  code: string
   pathToEndpoint: string
+  endpoint: string
   project: string
   user: string
   createdAt: Date

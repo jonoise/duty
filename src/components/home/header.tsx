@@ -65,16 +65,16 @@ export const HomeHeader = () => {
 
         <div className='flex space-x-4 mt-4'>
           <Link href={`/demo`}>
-            <button className='bg-pink-600 text-white m-0 p-0 rounded flex items-center px-5 py-2 text-sm font-bold'>
+            <button className='bg-blue-600 text-white m-0 p-0 rounded flex items-center px-5 py-2 text-sm font-bold'>
               TRY DUTY
             </button>
           </Link>
-          <button className='bg-pink-600 text-white m-0 p-0 rounded flex items-center px-5 py-2 text-sm font-bold'>
+          <button className='bg-blue-600 text-white m-0 p-0 rounded flex items-center px-5 py-2 text-sm font-bold'>
             CREATE ACCOUNT
           </button>
         </div>
       </div>
-      <div className='lg:w-1/2 rounded-xl bg-gradient-to-t from-rose-600 to-pink-600 p-0.5 h-min'>
+      <div className='lg:w-1/2 rounded-xl bg-gradient-to-t from-rose-600 to-blue-600 p-0.5 h-min'>
         <TrafficLightsIcon className='h-2.5 w-auto  fill-rose-700 mx-2 my-2' />
         <div className='p-4  overflow-scroll rounded-b-xl bg-zinc-900 '>
           <div className='bg-zinc-800 w-min px-4 py-1 rounded-full mb-2 text-xs'>

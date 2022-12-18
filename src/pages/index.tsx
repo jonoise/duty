@@ -99,7 +99,7 @@ const HomePage = () => {
           <h1 className='text-7xl font-bold z-40 py-4'>SPEED IS KEY</h1>
           {cobePerks.map((perk) => (
             <div key={perk.id} className='flex space-x-2 items-center'>
-              <div className='p-2 bg-gray-900 border border-pink-600 rounded'>
+              <div className='p-2 bg-gray-900 border border-blue-600 rounded'>
                 <perk.Icon className='w-5 h-5 text-yellow-300' />
               </div>
               <p className='z-10 inline font-display text-2xl tracking-tight'>
@@ -108,10 +108,10 @@ const HomePage = () => {
             </div>
           ))}
           <div className='flex space-x-4 mt-4'>
-            <button className='bg-pink-600 text-white m-0 p-0 rounded flex items-center px-5 py-2 text-sm font-bold'>
+            <button className='bg-blue-600 text-white m-0 p-0 rounded flex items-center px-5 py-2 text-sm font-bold'>
               TRY DUTY
             </button>
-            <button className='bg-pink-600 text-white m-0 p-0 rounded flex items-center px-5 py-2 text-sm font-bold'>
+            <button className='bg-blue-600 text-white m-0 p-0 rounded flex items-center px-5 py-2 text-sm font-bold'>
               CREATE ACCOUNT
             </button>
           </div>
@@ -132,7 +132,7 @@ const HomePage = () => {
           </p>
         </div>
       </div>
-      <div className='h-60 bg-pink-500 px-4'>
+      <div className='h-60 bg-blue-500 px-4'>
         <div className='flex flex-col justify-center items-center h-full space-y-4'>
           <h1 className='text-7xl font-bold z-40 text-white'>
             Since we launched
@@ -140,7 +140,7 @@ const HomePage = () => {
           <p className='text-2xl'>we have served over {'42.000'} requests</p>
         </div>
       </div>
-      <div className='bg-pink-600 h-10 flex items-center px-40'>
+      <div className='bg-blue-600 h-10 flex items-center px-40'>
         <div className='w-full flex justify-between'>
           <p>Duty™</p>
           <p>Duty™</p>

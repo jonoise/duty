@@ -26,6 +26,7 @@
     "@uiw/react-codemirror": "^4.15.1",
     "clsx": "^1.2.1",
     "cobe": "^0.6.2",
+    "dayjs": "^1.11.7",
     "esast-util-from-js": "^1.1.0",
     "ky": "^0.32.2",
     "mongodb": "^4.12.1",

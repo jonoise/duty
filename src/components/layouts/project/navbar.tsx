@@ -44,26 +44,26 @@ const projectNavigation = [
   },
   {
     id: 3,
-    name: 'Integrations',
-    href: (projectId: string) => `/project/${projectId}/integrations`,
-    path: 'integrations',
+    name: 'Environment Variables',
+    href: (projectId: string) => `/project/${projectId}/env`,
+    path: 'env',
   },
-  {
-    id: 4,
-    name: 'Alerts',
-    href: (projectId: string) => `/project/${projectId}/alerts`,
-    path: 'alerts',
-  },
-  {
-    id: 5,
-    name: 'Settings',
-    href: (projectId: string) => `/project/${projectId}/settings`,
-    path: 'settings',
-  },
-  {
-    id: 6,
-    name: 'Billing',
-    href: (projectId: string) => `/project/${projectId}/billing`,
-    path: 'billing',
-  },
+  // {
+  //   id: 4,
+  //   name: 'Alerts',
+  //   href: (projectId: string) => `/project/${projectId}/alerts`,
+  //   path: 'alerts',
+  // },
+  // {
+  //   id: 5,
+  //   name: 'Settings',
+  //   href: (projectId: string) => `/project/${projectId}/settings`,
+  //   path: 'settings',
+  // },
+  // {
+  //   id: 6,
+  //   name: 'Billing',
+  //   href: (projectId: string) => `/project/${projectId}/billing`,
+  //   path: 'billing',
+  // },
 ]
