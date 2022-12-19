@@ -3,12 +3,10 @@ import { SiteContainer } from '@/components/generics'
 import MainLayout from '@/components/layouts/main'
 import { HomeHeader } from '@/components/home'
 import createGlobe from 'cobe'
-import Image from 'next/image'
 import {
   Battery100Icon,
   BoltIcon,
   CheckIcon,
-  ServerIcon,
   ServerStackIcon,
 } from '@heroicons/react/24/solid'
 
@@ -124,11 +122,11 @@ const HomePage = () => {
         </video>
         <div className='flex-1 space-y-5 px-2 text-black'>
           <h1 className='text-7xl font-bold z-40'>
-            Focus on your duties, not on your tools.
+            Focus on your duties, not on your infrastructure.
           </h1>
           <p>
             We provide a just-write-and-deploy experience, so you can focus on
-            on your duties and not on your tools.
+            on your duties and not on your infrastructure.
           </p>
         </div>
       </div>

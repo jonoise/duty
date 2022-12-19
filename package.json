@@ -39,6 +39,7 @@
     "random-word-slugs": "^0.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-globe.gl": "^2.22.8",
     "react-hook-form": "^7.40.0",
     "react-hot-toast": "^2.4.0",
     "react-icons": "^4.7.1",

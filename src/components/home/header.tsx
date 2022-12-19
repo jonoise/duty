@@ -17,7 +17,7 @@ function TrafficLightsIcon(props: any) {
 }
 
 const codeLang = 'javascript'
-const codeSnippet = `const { MongoClient } = mongodb
+const codeSnippet = `const { MongoClient } = require('mongodb')
 
 module.exports = async function insertDuty() {
   const client = new MongoClient(process.env.MONGODB_URI);
@@ -75,7 +75,7 @@ export const HomeHeader = () => {
         </div>
       </div>
       <div className='lg:w-1/2 rounded-xl bg-gradient-to-t from-rose-600 to-blue-600 p-0.5 h-min'>
-        <TrafficLightsIcon className='h-2.5 w-auto  fill-rose-700 mx-2 my-2' />
+        <TrafficLightsIcon className='h-2.5 w-auto  fill-blue-800 mx-2 my-2' />
         <div className='p-4  overflow-scroll rounded-b-xl bg-zinc-900 '>
           <div className='bg-zinc-800 w-min px-4 py-1 rounded-full mb-2 text-xs'>
             <p>duty.js</p>
