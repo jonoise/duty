@@ -1,4 +1,4 @@
-import MainLayout from '@/components/layouts/main'
+import MainLayout from '@/components/layouts/home'
 import { signIn, useSession } from 'next-auth/react'
 import React, { useEffect, useRef } from 'react'
 import dynamic from 'next/dynamic'

@@ -42,7 +42,11 @@ export const Modal: FC<
             leaveTo='opacity-0 scale-95'
           >
             <div className='fixed inset-0 flex items-center justify-center p-4'>
-              <Dialog.Panel className={'w-1/3 bg-gray-800 p-5 rounded-lg '}>
+              <Dialog.Panel
+                className={
+                  'w-1/3 bg-[#111] border border-zinc-800 p-5 rounded-lg '
+                }
+              >
                 {props.children({ setIsOpen })}
               </Dialog.Panel>
             </div>

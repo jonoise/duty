@@ -1,5 +1,4 @@
 import React from 'react'
-import { ProjectsList } from '@/components/dashboard'
 import { GetServerSidePropsContext } from 'next'
 import { unstable_getServerSession } from 'next-auth'
 import { authOptions } from '../api/auth/[...nextauth]'
@@ -9,9 +8,7 @@ import DashboardLinksSubnavbar from '@/components/dashboard/LinkSubnavbar'
 const DashboardPage = () => {
   return (
     <MainLayout LinksSubnavbar={DashboardLinksSubnavbar}>
-      <div className='flex flex-col flex-1 overflow-hidden'>
-        <ProjectsList />
-      </div>
+      <div className='flex flex-col flex-1 overflow-hidden'></div>
     </MainLayout>
   )
 }

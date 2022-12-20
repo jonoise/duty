@@ -35,12 +35,12 @@ export const HomeHeader = () => {
     <div className='flex flex-col w-full py-20 lg:flex-row lg:items-center space-y-5 h-[70vh]'>
       <div className='lg:w-1/2 space-y-5'>
         <h1 className='text-6xl font-bold'>
-          Serverless <br /> micro-backends.
+          Serverless <br /> micro-services.
         </h1>
         <div className='flex w-full items-center'>
           <div className='flex space-x-1.5 items-center'>
             <h1 className='text-xl font-bold'>
-              Build for <span className='text-yellow-300'>Javascript </span>{' '}
+              Built for <span className='text-yellow-300'>NodeJS </span>{' '}
             </h1>
             <Image
               alt='Javascript Logo'
@@ -58,10 +58,11 @@ export const HomeHeader = () => {
               height={45}
               style={{ marginLeft: -3, marginRight: -4 }}
             />
-            <h1 className='text-xl font-bold'>services.</h1>
           </div>
         </div>
-        <p className='text-xl'>Create your own micro-backend in seconds.</p>
+        <p className='text-xl'>
+          Deploy your duties in your own micro-service in seconds.
+        </p>
 
         <div className='flex space-x-4 mt-4'>
           <Link href={`/demo`}>

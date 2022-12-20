@@ -1,4 +1,4 @@
-import { ProjectLayout } from '@/components/layouts/project'
+import { MainLayout } from '@/components/layouts/main'
 import { CreateDutyButton } from '@/components/project'
 import { datef, fromNow } from '@/lib/datef'
 import fetcher from '@/lib/fetcher'
@@ -10,6 +10,7 @@ import React, { useEffect } from 'react'
 import useSWR from 'swr'
 import { PencilSquareIcon } from '@heroicons/react/24/outline'
 import { SearchBar } from '@/components/generics'
+import ProjectLinksSubnavbar from '@/components/project/LinksSubnavbar'
 
 const ProjectDetails = () => {
   const router = useRouter()
@@ -32,7 +33,7 @@ const ProjectDetails = () => {
   console.log(project)
 
   return (
-    <ProjectLayout>
+    <MainLayout LinksSubnavbar={ProjectLinksSubnavbar}>
       <div>
         <h1 className='text-xl'>{!project ? 'Loading...' : project?.name}</h1>
       </div>
@@ -99,7 +100,7 @@ const ProjectDetails = () => {
           ))}
         </div>
       )}
-    </ProjectLayout>
+    </MainLayout>
   )
 }
 

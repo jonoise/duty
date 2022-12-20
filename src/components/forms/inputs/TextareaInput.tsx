@@ -41,11 +41,12 @@ export const TextareaInput: FC<InputProps> = (props) => {
           name={name}
           id={name}
           className={clsx(
-            disabled
+            className
+              ? className
+              : disabled
               ? 'bg-gray-700 text-gray-400 cursor-not-allowed'
               : 'text-gray-800',
-            'block w-full rounded-md border-blue-300 pr-10 placeholder-zinc-300 sm:text-sm ',
-            className
+            'block w-full rounded pr-10 placeholder-zinc-300 sm:text-sm'
           )}
           {...rest}
         />

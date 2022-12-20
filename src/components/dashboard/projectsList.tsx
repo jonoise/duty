@@ -18,13 +18,13 @@ export const ProjectsList = () => {
       <div className='flex space-x-3 items-center'>
         {projects?.length === 0 && (
           <div className='py-5'>
-            <h1 className='font-bold'>
+            <h1 className=''>
               No projects yet,{' '}
               <Modal
                 ActionComponent={({ onOpen }) => (
                   <span
                     onClick={onOpen}
-                    className='underline text-orange-500 cursor-pointer'
+                    className='underline text-cyan-400 cursor-pointer'
                   >
                     create one
                   </span>
@@ -64,12 +64,12 @@ export const ProjectsList = () => {
           ActionComponent={({ onOpen }) => (
             <div
               onClick={onOpen}
-              className='relative cursor-pointer w-52 h-52 bg-gray-800 rounded-lg px-4 py-3 space-y-2 flex flex-col justify-between'
+              className='relative cursor-pointer w-52 h-52 border border-zinc-800 bg-[#111] rounded px-4 py-3 space-y-2 flex flex-col justify-between'
             >
-              <div className='flex-1 rounded border-4 border-dashed border-gray-600 flex items-center justify-center'>
-                <PlusIcon className='text-gray-400 opacity-50 w-20 h-20 border-2 rounded-full' />
+              <div className='flex-1 rounded border-4 border-dashed border-zinc-800 flex items-center justify-center'>
+                <PlusIcon className='text-zinc-600 opacity-50 w-20 h-20 border-2 border-zinc-600 rounded-full' />
               </div>
-              <button className='bg-gradient-to-r from-gray-500 to-gray-700 w-full rounded py-2  text-gray-400'>
+              <button className='bg-gradient-to-tr from-zinc-900 to-zinc-800 w-full rounded py-2  text-zinc-400'>
                 Add Project
               </button>
             </div>

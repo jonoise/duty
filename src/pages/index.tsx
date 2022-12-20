@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { SiteContainer } from '@/components/generics'
-import MainLayout from '@/components/layouts/main'
+import MainLayout from '@/components/layouts/home'
 import { HomeHeader } from '@/components/home'
 import createGlobe from 'cobe'
 import {

@@ -1,36 +1,22 @@
-import React from 'react'
-import {
-  DutyLogo,
-  SiteContainer,
-  UserSettingsDropdown,
-} from '@/components/generics'
-import { useRouter } from 'next/router'
 import Link from 'next/link'
-import { useLastPath } from 'next-last-path'
+import { useRouter } from 'next/router'
+import React from 'react'
 
-export const ProjectLayoutNavbar = () => {
+const ProjectLinksSubnavbar = () => {
   const router = useRouter()
+
   return (
-    <nav className='border-b border-zinc-800 px-2'>
-      <SiteContainer>
-        <div className='h-16 flex justify-between items-center flex-1'>
-          <DutyLogo />
-          <UserSettingsDropdown />
-        </div>
-        <div className='flex space-x-4 text-zinc-500 text-sm'>
-          {projectNavigation.map((item) => (
-            <Link
-              key={item.id}
-              href={item.href(router.query.projectId as string)}
-            >
-              {item.name}
-            </Link>
-          ))}
-        </div>
-      </SiteContainer>
-    </nav>
+    <div className='flex space-x-4 text-zinc-500 text-sm'>
+      {projectNavigation.map((item) => (
+        <Link key={item.id} href={item.href(router.query.projectId as string)}>
+          {item.name}
+        </Link>
+      ))}
+    </div>
   )
 }
+
+export default ProjectLinksSubnavbar
 
 const projectNavigation = [
   {

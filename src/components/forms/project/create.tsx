@@ -81,7 +81,8 @@ export const CreateProjectForm: FC<Props> = (props) => {
         error={errors.name}
         rules={{ required: 'Name is required' }}
         label='Project Name'
-        placeholder='My awesome API endpoints'
+        placeholder='My awesome microservice'
+        className='bg-zinc-900 border-zinc-800 placeholder:text-gray-500'
       />
       <div className='space-y-1'>
         <TextInput
@@ -91,6 +92,7 @@ export const CreateProjectForm: FC<Props> = (props) => {
           rules={{ required: 'Slug is required' }}
           label='Project Slug'
           placeholder='my-unique-slug'
+          className='bg-zinc-900 border-zinc-800 placeholder:text-gray-500'
         />
         <p className='text-xs'>
           endpoint:{' '}
@@ -104,6 +106,7 @@ export const CreateProjectForm: FC<Props> = (props) => {
         rules={{ required: 'Description is required' }}
         label='Project Description'
         placeholder='This project contains all the API endpoints for...'
+        className='bg-zinc-900 border-zinc-800 placeholder:text-gray-500 min-h-16 max-h-16'
       />
       <div className='flex justify-end'>
         <button
