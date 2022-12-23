@@ -51,7 +51,6 @@ const ProjectEnvVars = () => {
   console.log(project)
   return (
     <>
-      <Toaster />
       <MainLayout LinksSubnavbar={ProjectLinksSubnavbar}>
         <h1 className='text-xl'>{'Environment Variables'}</h1>
 

@@ -1,6 +1,5 @@
-import { DemoEditor, DemoOutput } from '@/components/duty'
+import { CreateDutyInputs, DemoEditor, DemoOutput } from '@/components/duty'
 import { MainLayout } from '@/components/layouts/main'
-import { DutyInputs } from '@/components/Oldduty/DutyInputs'
 import { InstructionsModal } from '@/components/project'
 import ProjectLinksSubnavbar from '@/components/project/LinksSubnavbar'
 import { testFunction } from '@/lib/testFunction'
@@ -18,7 +17,7 @@ const NewDuty = () => {
           <h1 className='text-4xl font-bold'>New Duty</h1>
         </div>
         <div className='space-y-5'>
-          <DutyInputs testFunction={testFunction} />
+          <CreateDutyInputs testFunction={testFunction} />
           <div className='flex'>
             <div className='flex-1'>
               <DemoEditor

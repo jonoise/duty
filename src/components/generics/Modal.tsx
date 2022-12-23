@@ -16,7 +16,6 @@ export const Modal: FC<
   let [isOpen, setIsOpen] = useState(false)
   return (
     <>
-      <Toaster />
       {<ActionComponent onOpen={() => setIsOpen(true)} />}
 
       <Transition show={isOpen} as={Fragment}>

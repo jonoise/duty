@@ -51,7 +51,11 @@ export const updateDuty = async (req: NextApiRequest, res: NextApiResponse) => {
   if (!session) return res.status(401).end('Unauthorized')
 
   try {
-    const duty = await Duty.findByIdAndUpdate(dutyId, req.body, { new: true })
+    const duty = await Duty.findOneAndUpdate(
+      { _id: dutyId, user: session.user.id },
+      req.body,
+      { new: true }
+    )
     return res.status(200).json(duty)
   } catch (error: any) {
     console.log(error)

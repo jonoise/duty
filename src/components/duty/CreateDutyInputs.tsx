@@ -18,7 +18,7 @@ interface DutyInputsProps {
   slug?: string
 }
 
-export const DutyInputs: FC<DutyInputsProps> = (props) => {
+export const CreateDutyInputs: FC<DutyInputsProps> = (props) => {
   const { name, description, slug, testFunction } = props
 
   const { data: session } = useSession()
@@ -104,8 +104,6 @@ export const DutyInputs: FC<DutyInputsProps> = (props) => {
 
   return (
     <form onSubmit={handleSubmit(onsubmit)}>
-      <Toaster />
-
       <div className='flex flex-col space-y-4'>
         <div className='flex-1 space-y-4'>
           <div className='flex space-x-4 w-full'>
