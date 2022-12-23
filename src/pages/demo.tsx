@@ -71,7 +71,7 @@ const DutyLayout: FC<DutyLayoutProps> = (props): JSX.Element => {
             <DemoEditor
               code={dutyData.code}
               setCode={dutyData.setCode}
-              onSubmit={onSubmit}
+              testFunction={onSubmit}
             />
           </div>
           <div className='w-2/5'>
