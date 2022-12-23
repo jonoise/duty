@@ -1,6 +1,6 @@
 import { DemoEditor, DemoOutput } from '@/components/duty'
 import { posibleError } from '@/data/demo'
-import { useDemoData } from '@/stores/useDemoData'
+import { useDutyData } from '@/stores/useDutyData'
 import React, { FC } from 'react'
 import { GiAbstract089 } from 'react-icons/gi'
 
@@ -11,26 +11,26 @@ interface DutyLayoutProps {
 }
 
 const DutyLayout: FC<DutyLayoutProps> = (props): JSX.Element => {
-  const data = useDemoData()
+  const dutyData = useDutyData()
 
   const onSubmit = async () => {
-    data.setOutputLoading(true)
+    dutyData.setOutputLoading(true)
     const res = await fetch(`/api/test`, {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ code: data.code }),
+      body: JSON.stringify({ code: dutyData.code }),
     })
     if (res.ok) {
       const json = await res.json()
       if (!json.result) {
-        data.setOutput(JSON.stringify(posibleError, null, 2))
+        dutyData.setOutput(JSON.stringify(posibleError, null, 2))
       } else {
-        data.setOutput(JSON.stringify(json.result, null, 2))
+        dutyData.setOutput(JSON.stringify(json.result, null, 2))
       }
     } else {
-      data.setOutput(JSON.stringify(await res.json(), null, 2))
+      dutyData.setOutput(JSON.stringify(await res.json(), null, 2))
     }
-    data.setOutputLoading(false)
+    dutyData.setOutputLoading(false)
   }
 
   return (
@@ -69,13 +69,16 @@ const DutyLayout: FC<DutyLayoutProps> = (props): JSX.Element => {
         <div className='flex'>
           <div className='flex-1'>
             <DemoEditor
-              code={data.code}
-              setCode={data.setCode}
+              code={dutyData.code}
+              setCode={dutyData.setCode}
               onSubmit={onSubmit}
             />
           </div>
           <div className='w-2/5'>
-            <DemoOutput output={data.output} />
+            <DemoOutput
+              output={dutyData.output}
+              outputLoading={dutyData.outputLoading}
+            />
           </div>
         </div>
       </div>

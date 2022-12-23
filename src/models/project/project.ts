@@ -42,6 +42,7 @@ export const Project =
 export interface ProjectI {
   _id: string
   name: string
+  description: string
   language: string
   user: string
   env: ProjectEnvI[]

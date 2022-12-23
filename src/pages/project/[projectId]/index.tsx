@@ -86,7 +86,7 @@ const ProjectDetails = () => {
                 {duty.endpoint}
               </p>
               <div>
-                <Link href={`/project/${project._id}/duty/${duty._id}`}>
+                <Link href={`/project/${project._id}/${duty._id}`}>
                   <button className='w-full bg-blue-600 py-2 rounded'>
                     View Duty
                   </button>

@@ -1,6 +1,7 @@
 import { FC, PropsWithChildren } from 'react'
 import React from 'react'
 import {
+  Breadcrumbs,
   DutyLogo,
   SiteContainer,
   UserSettingsDropdown,
@@ -24,6 +25,11 @@ export const MainLayout: FC<MainLayoutProps> = (props) => {
           {props.LinksSubnavbar && <props.LinksSubnavbar />}
         </SiteContainer>
       </nav>
+      <section>
+        <SiteContainer>
+          <Breadcrumbs />
+        </SiteContainer>
+      </section>
       <SiteContainer>
         <div className='flex flex-col'>
           <div className='flex flex-col flex-1 overflow-hidden'>

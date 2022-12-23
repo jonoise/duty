@@ -1,6 +1,6 @@
 import { TextInput } from '@/components/forms'
 import { SearchBar } from '@/components/generics'
-import { ProjectLayout } from '@/components/layouts/main'
+import { MainLayout } from '@/components/layouts/main'
 import fetcher from '@/lib/fetcher'
 import { ProjectI } from '@/models'
 import { useRouter } from 'next/router'
@@ -13,6 +13,7 @@ import {
   TrashIcon,
   PencilIcon,
 } from '@heroicons/react/24/outline'
+import ProjectLinksSubnavbar from '@/components/project/LinksSubnavbar'
 
 const ProjectEnvVars = () => {
   const router = useRouter()
@@ -51,7 +52,9 @@ const ProjectEnvVars = () => {
   return (
     <>
       <Toaster />
-      <ProjectLayout>
+      <MainLayout LinksSubnavbar={ProjectLinksSubnavbar}>
+        <h1 className='text-xl'>{'Environment Variables'}</h1>
+
         <div className='w-full flex space-x-4'>
           <SearchBar />
         </div>
@@ -91,7 +94,6 @@ const ProjectEnvVars = () => {
           </div>
         </form>
         <div className='bg-[#111] p-4 rounded border border-zinc-800 space-y-4'>
-          <h2 className='text-lg'>Environment variables</h2>
           <div className='grid grid-cols-1 divide-y divide-zinc-700'>
             {project?.env.map((env) => (
               <div key={env._id} className='py-4'>
@@ -150,7 +152,7 @@ const ProjectEnvVars = () => {
             ))}
           </div>
         </div>
-      </ProjectLayout>
+      </MainLayout>
     </>
   )
 }

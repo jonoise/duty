@@ -13,6 +13,7 @@ interface InputProps extends React.HTMLProps<HTMLInputElement> {
   className?: string
   parentClassName?: string
   labelClassName?: string
+  withError?: boolean
 }
 
 export const TextInput: FC<InputProps> = (props) => {
@@ -28,6 +29,7 @@ export const TextInput: FC<InputProps> = (props) => {
     rules,
     disabled,
     parentClassName,
+    withError = false,
     ...rest
   } = props
 
@@ -51,6 +53,7 @@ export const TextInput: FC<InputProps> = (props) => {
               : disabled
               ? 'bg-gray-700 text-gray-400 cursor-not-allowed'
               : 'text-gray-800',
+            error ? 'border-red-500' : '',
             'block w-full rounded pr-10 placeholder-zinc-300 sm:text-sm'
           )}
           {...rest}
@@ -64,7 +67,7 @@ export const TextInput: FC<InputProps> = (props) => {
           </div>
         )}
       </div>
-      {error && (
+      {withError && error && (
         <p className='mt-2 text-sm text-red-400' id='email-error'>
           {error.message}
         </p>

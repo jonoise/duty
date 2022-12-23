@@ -3,9 +3,10 @@ import useSWR from 'swr'
 import fetcher from '@/lib/fetcher'
 import { ProjectI } from '@/models'
 import Link from 'next/link'
-import { PlusIcon } from '@heroicons/react/20/solid'
+import { PencilSquareIcon, PlusIcon } from '@heroicons/react/20/solid'
 import { Modal } from '../generics'
 import { CreateProjectForm } from '../forms'
+import { fromNow } from '@/lib/datef'
 
 export const ProjectsList = () => {
   const { data: projects } = useSWR<ProjectI[]>(
@@ -37,27 +38,39 @@ export const ProjectsList = () => {
           </div>
         )}
       </div>
-      <div className='flex space-x-4'>
+      <div className='grid grid-cols-3 gap-4'>
         {projects?.map((project) => (
           <div
             key={project._id}
-            className='relative w-52 h-52 bg-gray-800 rounded-lg px-4 py-3 space-y-2 flex flex-col justify-between'
+            className='relative bg-zinc-900 rounded border border-zinc-800 px-4 py-3 space-y-2 flex flex-col justify-between'
           >
             <h1 className='text-xl font-bold'>{project.name}</h1>
+            <p>{project.description}</p>
             {project.duties.length === 0 && (
               <h1 className='text-[12px] font-light '>
                 No duties yet,{' '}
                 <Link href={`/project/${project._id}`}>
-                  <span className='underline text-orange-500'>create one</span>.
+                  <span className='underline text-blue-600'>create one</span>.
                 </Link>
               </h1>
             )}
-
-            <Link href={`/project/${project._id}`}>
-              <button className='bg-gradient-to-r from-indigo-500 to-blue-500 w-full rounded py-2'>
-                Manage
-              </button>
-            </Link>
+            {project.duties.length > 0 && (
+              <h1 className='text-[12px] font-light '>
+                This project has {project.duties.length}{' '}
+                {project.duties.length === 1 ? 'duty' : 'duties'}.
+              </h1>
+            )}
+            <div className='space-y-2'>
+              <Link href={`/project/${project._id}`}>
+                <button className='bg-gradient-to-r from-indigo-500 to-blue-500 w-full rounded py-2'>
+                  Manage
+                </button>
+              </Link>
+              <div className='flex space-x-2 items-center text-[10px] font-extralight text-zinc-400'>
+                <PencilSquareIcon className='w-4 h-4' />
+                <p>{fromNow(project.updatedAt)}</p>
+              </div>
+            </div>
           </div>
         ))}
         <Modal

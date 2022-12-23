@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
 
-const DashboardLinksSubnavbar = () => {
+export const DashboardLinksSubnavbar = () => {
   const { lastPath } = useLastPath()
 
   return (
@@ -22,12 +22,10 @@ const DashboardLinksSubnavbar = () => {
   )
 }
 
-export default DashboardLinksSubnavbar
-
 const dashboardNavigation = [
   {
     id: 1,
-    name: 'Projects',
+    name: 'Overview',
     href: '/dashboard',
     path: 'dashboard',
   },

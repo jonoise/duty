@@ -3,7 +3,7 @@ import { GetServerSidePropsContext } from 'next'
 import { unstable_getServerSession } from 'next-auth'
 import { authOptions } from '../api/auth/[...nextauth]'
 import { MainLayout } from '@/components/layouts/main'
-import DashboardLinksSubnavbar from '@/components/dashboard/LinkSubnavbar'
+import { DashboardLinksSubnavbar } from '@/components/dashboard'
 
 const DashboardPage = () => {
   return (

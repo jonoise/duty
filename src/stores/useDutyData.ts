@@ -1,7 +1,7 @@
 import create from 'zustand'
 import { DemoCode } from '@/data/demo'
 
-type DemoData = {
+export type DutyData = {
   code: string
   setCode: (code: string) => void
 
@@ -15,7 +15,7 @@ type DemoData = {
   setOutputLoading: (loading: boolean) => void
 }
 
-export const useDemoData = create<DemoData>((set) => ({
+export const useDutyData = create<DutyData>((set) => ({
   code: DemoCode,
   setCode: (code) => set(() => ({ code })),
   output: '',

@@ -41,33 +41,29 @@ export const CreateProjectForm: FC<Props> = (props) => {
 
   const onSubmit = async (data: FieldValues) => {
     setLoading(true)
-    // try {
-    //   const res = await ky
-    //     .get(`/api/internal/more-projects`)
-    //     .json<{ canCreateMoreProjects: boolean }>()
-    //   if (!res.canCreateMoreProjects) {
-    //     toast.error('You need to upgrade your plan to create more projects')
-    //     setLoading(false)
-    //     return
-    //   }
-    // } catch (error) {
-    //   console.log(error)
-    // }
 
-    try {
-      const res = await ky
-        .post('/api/internal/project', {
-          json: { ...data, userId: session?.user.id },
-        })
-        .json<ProjectI>()
-
-      toast.success('Project created successfully')
-      setIsOpen && setIsOpen(false)
-      router.push(`/project/${res._id}`)
-    } catch (error: any) {
-      const res = await error.response.json()
-      toast.error(res.message)
+    const moreProjects = await fetch(`/api/internal/more-projects`)
+    if (!moreProjects.ok)
+      return toast.error('Something went wrong, please try again.')
+    const { canCreateMoreProjects } = await moreProjects.json()
+    if (!canCreateMoreProjects) {
+      toast.error('You need to upgrade your plan to create more projects.')
+      setLoading(false)
+      return
     }
+
+    const res = await fetch('/api/internal/project', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ ...data, userId: session?.user.id }),
+    })
+    if (!res.ok) return toast.error('Something went wrong, please try again.')
+    const json = await res.json()
+    toast.success('Project created successfully')
+    setIsOpen && setIsOpen(false)
+
+    router.push(`/project/${json._id}`)
+
     setLoading(false)
     mutate('/api/internal/project')
   }

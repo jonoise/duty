@@ -33,7 +33,7 @@ export default async function endpoint(
 
     let result = await duty(req)
 
-    return res.status(200).json(result)
+    return res.status(200).json(req.headers)
   } catch (error: any) {
     return res.status(500).json({ error: error.message })
   }

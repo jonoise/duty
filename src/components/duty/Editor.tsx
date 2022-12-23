@@ -4,15 +4,17 @@ import { xcodeDark } from '@uiw/codemirror-theme-xcode'
 import { javascript } from '@codemirror/lang-javascript'
 import { format } from 'prettier/standalone'
 import parserBabel from 'prettier/parser-babel'
+import { DutyData, useDutyData } from '@/stores/useDutyData'
 
 interface Props {
   code: string
   setCode: (code: string) => void
-  onSubmit: () => Promise<void>
+  testFunction: (dutyData: DutyData) => Promise<void>
 }
 
 export const DemoEditor: FC<Props> = (props) => {
-  const { code, setCode, onSubmit } = props
+  const { code, setCode, testFunction } = props
+  const dutyData = useDutyData()
 
   useEffect(() => {
     function clickedSave(e: KeyboardEvent) {
@@ -31,20 +33,20 @@ export const DemoEditor: FC<Props> = (props) => {
       }
     }
 
-    async function clickedSubmit(e: KeyboardEvent) {
+    async function clickedTest(e: KeyboardEvent) {
       let charCode = String.fromCharCode(e.which).toLowerCase()
       if ((e.ctrlKey || e.metaKey) && charCode === 'd') {
         e.preventDefault()
-        await onSubmit()
+        await testFunction(dutyData)
       }
     }
 
     window.addEventListener('keydown', clickedSave)
-    window.addEventListener('keydown', clickedSubmit)
+    window.addEventListener('keydown', clickedTest)
 
     return () => {
       window.removeEventListener('keydown', clickedSave)
-      window.removeEventListener('keydown', clickedSubmit)
+      window.removeEventListener('keydown', clickedTest)
     }
   }, [code])
 
