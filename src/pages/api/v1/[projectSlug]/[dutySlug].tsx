@@ -9,11 +9,22 @@ export default async function endpoint(
 ) {
   await dbConnect()
   const { projectSlug, dutySlug } = req.query as ApiQuery
+  const requestKey = req.headers['duty-key']
 
   try {
     // TODO: ADD TYPES TO MONGOOSE MODELS
-    // @ts-ignore
-    let { duty: dutyObject, env } = await Duty.findbySlug(projectSlug, dutySlug)
+    let {
+      duty: dutyObject,
+      env,
+      keys,
+      // @ts-ignore
+    } = await Duty.findbySlug(projectSlug, dutySlug)
+
+    console.log(keys.private, requestKey)
+
+    if (keys.private !== requestKey)
+      return res.status(401).json({ error: 'Unauthorized' })
+
     const code = dutyObject.code
 
     const vm = new NodeVM({
@@ -33,7 +44,7 @@ export default async function endpoint(
 
     let result = await duty(req)
 
-    return res.status(200).json(req.headers)
+    return res.status(200).json(result)
   } catch (error: any) {
     return res.status(500).json({ error: error.message })
   }

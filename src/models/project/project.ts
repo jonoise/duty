@@ -32,6 +32,10 @@ const projectSchema = new mongoose.Schema(
         ref: 'Duty',
       },
     ],
+    keys: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Keys',
+    },
   },
   { timestamps: true }
 )
@@ -47,6 +51,7 @@ export interface ProjectI {
   user: string
   env: ProjectEnvI[]
   slug: string
+  keys: { private: string }
   duties: DutyI[]
   createdAt: Date
   updatedAt: Date

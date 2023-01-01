@@ -32,23 +32,24 @@ module.exports = async function insertDuty() {
 
 export const HomeHeader = () => {
   return (
-    <div className='flex flex-col w-full py-20 lg:flex-row lg:items-center space-y-5 h-[70vh]'>
+    <div className='flex flex-col w-full py-10 lg:py-20 lg:flex-row lg:items-center space-y-5 h-[80vh] lg:h-[70vh]'>
       <div className='lg:w-1/2 space-y-5'>
-        <h1 className='text-6xl font-bold'>
+        <h1 className='text-4xl lg:text-6xl font-bold'>
           Serverless <br /> micro-services.
         </h1>
         <div className='flex w-full items-center'>
           <div className='flex space-x-1.5 items-center'>
-            <h1 className='text-xl font-bold'>
-              Built for <span className='text-yellow-300'>NodeJS </span>{' '}
+            <h1 className='text-sm lg:text-xl font-bold'>
+              Built for <span className='text-sky-300'>React Native </span>{' '}
             </h1>
             <Image
               alt='Javascript Logo'
               src={'/js-logo.svg'}
               width={25}
               height={25}
+              className='w-3'
             />
-            <h1 className='text-xl font-bold'>
+            <h1 className='text-sm lg:text-xl font-bold'>
               and <span className='text-green-600'>MongoDB</span>
             </h1>
             <Image
@@ -56,11 +57,11 @@ export const HomeHeader = () => {
               src={'/mongo-logo.svg'}
               width={35}
               height={45}
-              style={{ marginLeft: -3, marginRight: -4 }}
+              className='w-4'
             />
           </div>
         </div>
-        <p className='text-xl'>
+        <p className='lg:text-xl'>
           Deploy your duties in your own micro-service in seconds.
         </p>
 

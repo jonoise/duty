@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
 import { ProjectEnv, ProjectEnvI } from './env'
+import { Keys } from './keys'
 import { Project } from './project'
 
 const dutySchema = new mongoose.Schema(
@@ -45,10 +46,16 @@ dutySchema.statics.findbySlug = async function (
   projectSlug: string,
   dutySlug: string
 ) {
-  let project = await Project.findOne({ slug: projectSlug }).populate({
-    path: 'env',
-    model: ProjectEnv,
-  })
+  let project = await Project.findOne({ slug: projectSlug })
+    .populate({
+      path: 'env',
+      model: ProjectEnv,
+    })
+    .populate({
+      path: 'keys',
+      model: Keys,
+    })
+
   if (!project) {
     throw new Error('Project not found')
   }
@@ -58,13 +65,17 @@ dutySchema.statics.findbySlug = async function (
     env[viarable.key] = viarable.value
   })
 
+  let keys = {
+    private: project.keys.private,
+  }
+
   let duty = await Duty.findOne({ slug: dutySlug, project: project._id })
 
   if (!duty) {
     throw new Error('Duty not found')
   }
 
-  return { duty, env }
+  return { duty, env, keys }
 }
 
 export const Duty = mongoose.models.Duty || mongoose.model('Duty', dutySchema)

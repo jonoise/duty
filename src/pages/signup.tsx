@@ -11,7 +11,7 @@ const Globe = dynamic(() => import('@/components/generics/GlobeGL'), {
 const SignUpPage = () => {
   return (
     <MainLayout>
-      <div className='flex flex-col-reverse md:flex-row lg:h-[90vh]'>
+      <div className='flex flex-col-reverse md:flex-row lg:h-[90vh] bg-[#000012]'>
         <div className='flex-1 flex justify-center items-center'>
           <div className='px-6 lg:pl-40 grid space-y-4'>
             <h1 className='text-5xl font-bold'>Start your micro service! 🚀</h1>
