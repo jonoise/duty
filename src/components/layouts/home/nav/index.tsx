@@ -13,12 +13,7 @@ const MainLayoutNavbar = () => {
         <div className='flex justify-between items-center h-16 px-2'>
           <DutyLogo />
           <div className='hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8 md:flex md:items-center '>
-            <Link
-              href='/pricing'
-              className='inline-flex items-center px-1 pt-1 text-sm font-bold'
-            >
-              Pricing
-            </Link>
+            <p>Versión 0.3</p>
             {session && (
               <Link href={`/dashboard`} passHref>
                 <button className='border border-blue-600 m-0 p-0 rounded flex items-center px-4 py-1 text-sm font-bold'>

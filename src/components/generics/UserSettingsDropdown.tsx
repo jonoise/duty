@@ -79,7 +79,6 @@ export const UserSettingsDropdown: FC<{ dark?: boolean }> = ({ dark }) => {
             )}
           >
             <div className='px-5 py-2 text-gray-700 space-y-6'>
-              <h1>Hola, pequeña criatura. 👋</h1>
               <Link href={`/login`} passHref>
                 <div className='flex flex-col items-center w-full'>
                   <img
