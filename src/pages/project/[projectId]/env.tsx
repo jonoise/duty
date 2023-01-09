@@ -90,7 +90,12 @@ const ProjectEnvVars = () => {
         <div className='bg-[#111] p-4 rounded border border-zinc-800 space-y-4'>
           <div className='grid grid-cols-1 divide-y divide-zinc-700'>
             {project?.env.map((env) => (
-              <EnvCard env={env} project={project} mutate={mutate} />
+              <EnvCard
+                key={env._id}
+                env={env}
+                project={project}
+                mutate={mutate}
+              />
             ))}
           </div>
         </div>
