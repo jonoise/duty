@@ -9,7 +9,7 @@ export const canCreateMoreProjects = async (
 ) => {
   try {
     const plan = await Plan.findOne({ user: session.user.id })
-    const projects = await Project.findOne({ user: session.user.id })
+    const projects = await Project.find({ user: session.user.id })
     const canCreateMoreProjects = plan.maxProjects > projects.length
 
     return res.status(200).json({ canCreateMoreProjects })

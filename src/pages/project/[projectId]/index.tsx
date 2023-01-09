@@ -82,9 +82,11 @@ const ProjectDetails = () => {
                   </p>
                 </Link>
               </div>
-              <p className='text-xs font-light text-slate-300'>
-                {duty.endpoint}
-              </p>
+              <Link href={duty.endpoint} target='_blank'>
+                <p className='text-xs font-light text-slate-300'>
+                  {duty.endpoint}
+                </p>
+              </Link>
               <div>
                 <Link href={`/project/${project._id}/${duty._id}`}>
                   <button className='w-full bg-blue-600 py-2 rounded'>

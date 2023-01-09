@@ -1,6 +1,7 @@
-import { Duty, Project, ProjectEnv } from '@/models'
+import { Duty, Keys, Project, ProjectEnv } from '@/models'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { Session } from 'next-auth'
+import { nanoid } from 'nanoid/async'
 
 export const getProjects = async (
   req: NextApiRequest,
@@ -56,10 +57,12 @@ export const createProject = async (
       user: session.user.id,
     })
 
-    await ProjectEnv.create({
+    const keys = await Keys.create({
       project: p._id,
-      user: session.user.id,
+      private: await nanoid(30),
     })
+    p.keys = keys._id
+    await p.save()
 
     return res.status(201).json(p)
   } catch (error) {

@@ -35,12 +35,12 @@ const projectNavigation = [
     href: (projectId: string) => `/project/${projectId}`,
     path: (projectId: string) => `${projectId}`,
   },
-  // {
-  //   id: 2,
-  //   name: 'API Keys',
-  //   href: (projectId: string) => `/project/${projectId}/keys`,
-  //   path: () => 'keys',
-  // },
+  {
+    id: 2,
+    name: 'API Keys',
+    href: (projectId: string) => `/project/${projectId}/keys`,
+    path: () => 'keys',
+  },
   {
     id: 3,
     name: 'Environment Variables',
