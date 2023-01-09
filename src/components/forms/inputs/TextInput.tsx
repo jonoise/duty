@@ -5,7 +5,7 @@ import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { ExclamationCircleIcon } from '@heroicons/react/20/solid'
 interface InputProps extends React.HTMLProps<HTMLInputElement> {
   type?: string
-  label: string
+  label?: string
   register: UseFormRegister<any>
   name: string
   error: any
@@ -35,12 +35,14 @@ export const TextInput: FC<InputProps> = (props) => {
 
   return (
     <div ref={inputParent} className={parentClassName}>
-      <label
-        htmlFor={name}
-        className={clsx('block text-sm font-medium', labelClassName)}
-      >
-        {label}
-      </label>
+      {label && (
+        <label
+          htmlFor={name}
+          className={clsx('block text-sm font-medium', labelClassName)}
+        >
+          {label}
+        </label>
+      )}
       <div className='relative mt-1 rounded shadow-sm'>
         <input
           {...register(name, rules)}

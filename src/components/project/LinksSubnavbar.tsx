@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
 
-const ProjectLinksSubnavbar = () => {
+export const ProjectLinksSubnavbar = () => {
   const router = useRouter()
   const { lastPath } = useLastPath()
   return (
@@ -25,8 +25,6 @@ const ProjectLinksSubnavbar = () => {
     </div>
   )
 }
-
-export default ProjectLinksSubnavbar
 
 const projectNavigation = [
   {

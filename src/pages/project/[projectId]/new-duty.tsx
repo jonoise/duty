@@ -1,7 +1,6 @@
 import { CreateDutyInputs, DemoEditor, DemoOutput } from '@/components/duty'
 import { MainLayout } from '@/components/layouts/main'
-import { InstructionsModal } from '@/components/project'
-import ProjectLinksSubnavbar from '@/components/project/LinksSubnavbar'
+import { InstructionsModal, ProjectLinksSubnavbar } from '@/components/project'
 import { testFunction } from '@/lib/testFunction'
 import { useDutyData } from '@/stores/useDutyData'
 import React from 'react'

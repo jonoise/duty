@@ -5,7 +5,7 @@ import {
   UpdateDutyInputs,
 } from '@/components/duty'
 import { MainLayout } from '@/components/layouts/main'
-import ProjectLinksSubnavbar from '@/components/project/LinksSubnavbar'
+import { ProjectLinksSubnavbar } from '@/components/project'
 import fetcher from '@/lib/fetcher'
 import { testFunction } from '@/lib/testFunction'
 import { DutyI } from '@/models'

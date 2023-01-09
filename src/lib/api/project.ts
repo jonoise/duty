@@ -59,7 +59,7 @@ export const createProject = async (
 
     const keys = await Keys.create({
       project: p._id,
-      private: await nanoid(30),
+      private: await nanoid(50),
     })
     p.keys = keys._id
     await p.save()

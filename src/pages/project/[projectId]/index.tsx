@@ -10,7 +10,7 @@ import React, { useEffect } from 'react'
 import useSWR from 'swr'
 import { PencilSquareIcon } from '@heroicons/react/24/outline'
 import { SearchBar } from '@/components/generics'
-import ProjectLinksSubnavbar from '@/components/project/LinksSubnavbar'
+import { ProjectLinksSubnavbar } from '@/components/project'
 
 const ProjectDetails = () => {
   const router = useRouter()
