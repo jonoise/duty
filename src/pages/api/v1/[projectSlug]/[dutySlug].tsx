@@ -9,7 +9,7 @@ export default async function endpoint(
 ) {
   await dbConnect()
   const { projectSlug, dutySlug } = req.query as ApiQuery
-  const requestKey = req.headers['duty-key']
+  const requestKey = req.headers['duty-token']
 
   try {
     // TODO: ADD TYPES TO MONGOOSE MODELS
@@ -19,8 +19,6 @@ export default async function endpoint(
       keys,
       // @ts-ignore
     } = await Duty.findbySlug(projectSlug, dutySlug)
-
-    console.log(keys.private, requestKey)
 
     if (keys.private !== requestKey)
       return res.status(401).json({ error: 'Unauthorized' })
