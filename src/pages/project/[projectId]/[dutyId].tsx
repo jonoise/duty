@@ -1,18 +1,14 @@
-import {
-  CreateDutyInputs,
-  DemoEditor,
-  DemoOutput,
-  UpdateDutyInputs,
-} from '@/components/duty'
+import { DemoEditor, DemoOutput, UpdateDutyInputs } from '@/components/duty'
 import { MainLayout } from '@/components/layouts/main'
 import { ProjectLinksSubnavbar } from '@/components/project'
-import fetcher from '@/lib/fetcher'
-import { testFunction } from '@/lib/testFunction'
+import { fetcher, testFunction } from '@/lib'
 import { DutyI } from '@/models'
 import { useDutyData } from '@/stores/useDutyData'
 import { useRouter } from 'next/router'
 import React from 'react'
 import useSWR from 'swr'
+import '@codemirror/autocomplete'
+import '@codemirror/lint'
 
 const DutyDetails = () => {
   const dutyData = useDutyData()

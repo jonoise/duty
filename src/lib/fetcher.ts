@@ -12,5 +12,3 @@ export async function fetcher<JSON = any>(
 
   return response.json()
 }
-
-export default fetcher

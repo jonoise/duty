@@ -1,12 +1,11 @@
 import React from 'react'
 import useSWR from 'swr'
-import fetcher from '@/lib/fetcher'
+import { fetcher, fromNow } from '@/lib'
 import { ProjectI } from '@/models'
 import Link from 'next/link'
 import { PencilSquareIcon, PlusIcon } from '@heroicons/react/20/solid'
 import { Modal } from '../generics'
 import { CreateProjectForm } from '../forms'
-import { fromNow } from '@/lib/datef'
 
 export const ProjectsList = () => {
   const { data: projects } = useSWR<ProjectI[]>(

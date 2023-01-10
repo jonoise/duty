@@ -1,7 +1,6 @@
 import { MainLayout } from '@/components/layouts/main'
 import { CreateDutyButton } from '@/components/project'
-import { datef, fromNow } from '@/lib/datef'
-import fetcher from '@/lib/fetcher'
+import { fromNow, fetcher } from '@/lib'
 import { ProjectI } from '@/models'
 import Image from 'next/image'
 import Link from 'next/link'

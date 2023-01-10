@@ -1,7 +1,7 @@
 import { TextInput } from '@/components/forms'
 import { SearchBar } from '@/components/generics'
 import { MainLayout } from '@/components/layouts/main'
-import fetcher from '@/lib/fetcher'
+import { fetcher } from '@/lib'
 import { ProjectI } from '@/models'
 import { useRouter } from 'next/router'
 import React from 'react'
