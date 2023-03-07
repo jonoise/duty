@@ -75,7 +75,7 @@ dutySchema.statics.findbySlug = async function (
     throw new Error('Duty not found')
   }
 
-  return { duty, env, keys }
+  return { duty, env, keys, project }
 }
 
 export const Duty = mongoose.models.Duty || mongoose.model('Duty', dutySchema)

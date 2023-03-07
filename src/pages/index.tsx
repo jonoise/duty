@@ -24,7 +24,7 @@ const HomePage = () => {
           </h1>
           <p>
             We provide a just-write-and-deploy experience, so you can focus on
-            on your duties and not on your infrastructure.
+            your duties and not on your infrastructure.
           </p>
         </div>
       </div>

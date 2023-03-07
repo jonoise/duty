@@ -30,12 +30,6 @@ const dashboardNavigation = [
     path: 'dashboard',
   },
   {
-    id: 2,
-    name: 'Logs',
-    href: '/dashboard/logs',
-    path: 'logs',
-  },
-  {
     id: 3,
     name: 'Reports',
     href: '/dashboard/reports',

@@ -14,10 +14,11 @@ const SignUpPage = () => {
       <div className='flex flex-col-reverse md:flex-row lg:h-[90vh] bg-[#000012]'>
         <div className='flex-1 flex justify-center items-center'>
           <div className='px-6 lg:pl-40 grid space-y-4'>
-            <h1 className='text-5xl font-bold'>Start your micro service! 🚀</h1>
+            <h1 className='text-5xl font-bold'>
+              Start your journey to the clouds! 🚀☁️
+            </h1>
             <p className='text-zinc-400'>
-              Deploy your project on the edge within minutes and start
-              automating your duties beyond the cloud.
+              Deploy your duties on serverless functions running in the edge.
             </p>
             <div
               onClick={() => signIn('google', { callbackUrl: '/dashboard' })}

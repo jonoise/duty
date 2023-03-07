@@ -1,4 +1,5 @@
 import dbConnect from '@/config/dbConnect'
+import { pusher } from '@/config/pusher'
 import { Duty } from '@/models'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { NodeVM } from 'vm2'
@@ -21,7 +22,7 @@ export default async function endpoint(
     } = await Duty.findbySlug(projectSlug, dutySlug)
 
     if (keys.private !== requestKey)
-      return res.status(401).json({ error: 'Unauthorized' })
+      return res.status(401).json({ message: 'Unauthorized' })
 
     const code = dutyObject.code
 
@@ -41,9 +42,20 @@ export default async function endpoint(
     let duty = vm.run(code, 'vm.js')
 
     let result = await duty(req)
+    await pusher.trigger('logs', `new-log-${dutyObject.project.toString()}`, {
+      duty: dutyObject._id,
+      result,
+      req: {
+        method: req.method,
+        url: req.url,
+        headers: req.headers,
+        body: req.body,
+      },
+    })
 
     return res.status(200).json(result)
   } catch (error: any) {
+    console.log(error)
     return res.status(500).json({ error: error.message })
   }
 }

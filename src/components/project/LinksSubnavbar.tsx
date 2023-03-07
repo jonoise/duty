@@ -45,6 +45,12 @@ const projectNavigation = [
     href: (projectId: string) => `/project/${projectId}/env`,
     path: () => 'env',
   },
+  {
+    id: 4,
+    name: 'Logs',
+    href: (projectId: string) => `/project/${projectId}/logs`,
+    path: () => 'logs',
+  },
   // {
   //   id: 4,
   //   name: 'Alerts',
