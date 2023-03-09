@@ -68,6 +68,7 @@ export const UserSettingsDropdown: FC<{ dark?: boolean }> = ({ dark }) => {
                 onClick={() =>
                   signOut({
                     callbackUrl: '/',
+                    redirect: false,
                   })
                 }
                 className='px-2 py-1 flex items-center space-x-2 hover:bg-[#111] cursor-pointer'
