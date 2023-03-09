@@ -32,7 +32,7 @@ export const UserSettingsDropdown: FC<{ dark?: boolean }> = ({ dark }) => {
               width={32}
               height={32}
               className='h-8 w-8 rounded-full'
-              src={session?.user.image || '/logo-sm.png'}
+              src={session?.user.image ? session?.user.image : '/logo-sm.png'}
               alt=''
             />
           </Menu.Button>
@@ -43,7 +43,7 @@ export const UserSettingsDropdown: FC<{ dark?: boolean }> = ({ dark }) => {
               width={32}
               height={32}
               className='h-8 w-8 rounded-full'
-              src={session?.user.image || '/logo-sm.png'}
+              src={session?.user.image ? session?.user.image : '/logo-sm.png'}
               alt=''
             />
           </Menu.Button>
@@ -102,7 +102,9 @@ export const UserSettingsDropdown: FC<{ dark?: boolean }> = ({ dark }) => {
                     width={32}
                     height={32}
                     className='h-8 w-8 rounded-full border'
-                    src={session?.user.image || '/logo-sm.png'}
+                    src={
+                      session?.user.image ? session?.user.image : '/logo-sm.png'
+                    }
                     alt=''
                   />
                   <h1>Duty ™</h1>
