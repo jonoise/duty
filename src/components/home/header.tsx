@@ -58,7 +58,7 @@ export const HomeHeader = () => {
           </div>
         </div>
         <p className='lg:text-xl'>
-          Deploy your duties in serverless functions in seconds.
+          Deploy Node.js serverless functions in seconds.
         </p>
 
         <div className='flex space-x-4 mt-4'>

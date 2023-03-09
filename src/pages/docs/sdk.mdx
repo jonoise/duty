@@ -1,0 +1,70 @@
+# Duty SDK
+
+The Duty SDK is a Typescript library that allows you to interact with the Duty API. It is designed to be easy to use.
+As Duty is thought for React environments, the SDK is designed to be used with React. But can be used with any other framework.
+
+The SDK uses the native fetch API. So you can modify the request body by passing an object as the second argument.
+
+## Installation
+
+```bash
+npm install @duty/sdk
+```
+
+## Usage
+
+```typescript
+// configs.ts
+import { Client } from '@duty/sdk'
+
+export const api = new Client('api-key', 'project-slug')
+```
+
+## GET Request
+
+```tsx
+import { api } from './configs.ts'
+
+const fetchdata = async () => {
+  const { data, error } = await api.get('/endpoint')
+  if (error) {
+    // handle error
+  }
+  return data
+}
+```
+
+## POST/PUT/DELETE Request
+
+The only thing that changes is the method name.
+
+```tsx
+import { api } from './configs.ts'
+
+const postdata = async () => {
+  const { data, error } = await api.post('/endpoint', {
+    body: { my: 'data' },
+  })
+  if (error) {
+    // handle error
+  }
+  return data
+}
+```
+
+## useGet Request
+
+This is a React Hook that fetches data using React Hooks.
+
+```tsx
+// components.ts
+import { api } from './configs.ts'
+
+export const MyComponent = () => {
+  const { data, error, isLoading } = api.useGet<{ my: 'data' }>('/endpoint')
+
+  if (isLoading) return <div>Loading...</div>
+
+  return <div>{data}</div>
+}
+```

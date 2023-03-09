@@ -1,4 +1,4 @@
-import { DutyLogo } from '@/components/generics'
+import { DutyLogo, UserSettingsDropdown } from '@/components/generics'
 import { SiteContainer } from '@/components/generics/SiteContainer'
 import { signOut, useSession } from 'next-auth/react'
 import Link from 'next/link'
@@ -16,23 +16,16 @@ const MainLayoutNavbar = () => {
               href={'/changelog'}
               className='text-xs text-blue-300 bg-gradient-to-tr from-zinc-700 to-zinc-900 px-3 py-1 rounded-full'
             >
-              Beta 0.3
+              Docs
             </Link>
-            {session && (
+            {/* {session && (
               <Link href={`/dashboard`} passHref>
                 <button className='border border-blue-600 m-0 p-0 rounded flex items-center px-4 py-1 text-sm font-bold'>
                   Dashboard
                 </button>
               </Link>
-            )}
-            {session ? (
-              <button
-                onClick={() => signOut()}
-                className='border border-blue-600 m-0 p-0 rounded flex items-center px-4 py-1 text-sm font-bold'
-              >
-                Logout
-              </button>
-            ) : (
+            )*/}
+            {!session && (
               <Link
                 href='/signup'
                 className='bg-blue-600 m-0 p-0 rounded-full flex items-center px-5 py-2 text-sm font-bold'
@@ -40,6 +33,7 @@ const MainLayoutNavbar = () => {
                 Sign up
               </Link>
             )}
+            <UserSettingsDropdown dark={true} />
           </div>
         </div>
       </SiteContainer>

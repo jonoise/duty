@@ -1,0 +1,28 @@
+# Duties
+
+Once you have created a project, you can add duties to it. A <span className='text-red-500'>Duty</span> is a simple
+javascript function that lives in an endpoint. It will be executed everytime you call that endpoint.
+
+### Creating a duty
+
+When you create a Duty you will be asked to provide a <span className='text-red-500'>name</span>, a <span className='text-red-500'>description</span> and, again, a <span className='text-red-500'>unique slug</span>. This slug will be used to identify the duty in your project.
+
+![Creating a new duty web page](https://user-images.githubusercontent.com/71573508/223337345-266126d9-174a-4c69-8d50-23fb0c9d9b16.png)
+
+You can test your duty by clicking on the <span className='text-red-500'>Test function</span> button. This will execute your function and show you the result on the right side of the screen.
+
+Once you have finished testing your duty, you can save it by clicking on the <span className='text-red-500'>Save function</span> button.
+
+### Content of a Duty
+
+Duties <span className='text-red-500' >MUST START</span> with the statement `module.exports` and export an async function.
+Otherwise the duty will fail.
+
+### Parameters
+
+Duties receive one parameter, which is the `Request` object. This object contains all the information about the request that was made to the endpoint.
+So you can easily access the request body, headers, query parameters, etc. For a full list of the properties of the `Request` object, please refer to the [Request object documentation](/docs/request-object).
+
+### Environment variables
+
+You can access the environment variables of your project by using the `process.env` object. For example, if you have an environment variable called `MY_ENV_VAR`, you can access it by using `process.env.MY_ENV_VAR`.

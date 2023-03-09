@@ -78,33 +78,22 @@ export const UserSettingsDropdown: FC<{ dark?: boolean }> = ({ dark }) => {
               'absolute right-0 z-10 mt-2 w-80 origin-top-right rounded-md py-4 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'
             )}
           >
-            <div className='px-5 py-2 text-gray-700 space-y-6'>
-              <Link href={`/login`} passHref>
-                <div className='flex flex-col items-center w-full'>
-                  <img
-                    className='h-16 w-16 rounded-full cursor-pointer'
+            <div className='h-52'>
+              <div className='flex flex-col items-center justify-center h-full p-4 text-center space-y-4'>
+                <div className='flex space-x-2 items-center'>
+                  <Image
+                    width={32}
+                    height={32}
+                    className='h-8 w-8 rounded-full border'
+                    src={session?.user.image || '/logo-sm.png'}
                     alt=''
                   />
-                  <h1 className='text-center text-gray-700 text-lg font-bold'>
-                    Empieza a bloguear en tu idioma con{' '}
-                    <span
-                      className={clsx(
-                        dark ? 'text-sky-300' : 'text-indigo-500',
-                        'font-bold  cursor-pointer'
-                      )}
-                    >
-                      Los Junior
-                    </span>
-                  </h1>
+                  <h1>Duty ™</h1>
                 </div>
-              </Link>
-              <div className='flex justify-evenly space-x-4'>
-                <Link href={`/login`}>
-                  <button>Entrar</button>
-                </Link>
-                <Link href={`/register`}>
-                  <button>Registrarme</button>
-                </Link>
+                <h2>Deploy your next serverless API in seconds.</h2>
+                <button className='px-4 py-2 bg-blue-600 rounded-full'>
+                  Create Account
+                </button>
               </div>
             </div>
           </Menu.Items>
@@ -125,6 +114,12 @@ const authNavigation = [
     id: 3,
     name: `Dashboard`,
     href: `/dashboard`,
+    Icon: HiUserCircle,
+  },
+  {
+    id: 3,
+    name: `Documentation`,
+    href: `/docs`,
     Icon: HiUserCircle,
   },
 ]
