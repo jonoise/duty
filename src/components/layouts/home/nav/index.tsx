@@ -1,6 +1,6 @@
 import { DutyLogo, UserSettingsDropdown } from '@/components/generics'
 import { SiteContainer } from '@/components/generics/SiteContainer'
-import { signOut, useSession } from 'next-auth/react'
+import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import React from 'react'
 
