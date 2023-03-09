@@ -13,7 +13,7 @@ const MainLayoutNavbar = () => {
           <DutyLogo />
           <div className='hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8 md:flex md:items-center '>
             <Link
-              href={'/changelog'}
+              href={'/docs'}
               className='text-xs text-blue-300 bg-gradient-to-tr from-zinc-700 to-zinc-900 px-3 py-1 rounded-full'
             >
               Docs

@@ -1,6 +1,6 @@
 import { Menu, Transition } from '@headlessui/react'
 import React, { FC } from 'react'
-import { useSession } from 'next-auth/react'
+import { useSession, signOut } from 'next-auth/react'
 import Link from 'next/link'
 import { HiHome, HiUserCircle, HiLogout } from 'react-icons/hi'
 import clsx from 'clsx'
@@ -63,13 +63,18 @@ export const UserSettingsDropdown: FC<{ dark?: boolean }> = ({ dark }) => {
                 </Link>
               ))}
             </div>
-            <Link href={'/logout'} passHref>
-              <Menu.Item>
-                <div className='px-2 py-1 flex items-center space-x-2 hover:bg-[#111]'>
-                  <p className='text-xs font-light'>Logout 🏄‍♀️</p>
-                </div>
-              </Menu.Item>
-            </Link>
+            <Menu.Item>
+              <div
+                onClick={() =>
+                  signOut({
+                    callbackUrl: '/',
+                  })
+                }
+                className='px-2 py-1 flex items-center space-x-2 hover:bg-[#111]'
+              >
+                <p className='text-xs font-light'>Logout 🏄‍♀️</p>
+              </div>
+            </Menu.Item>
           </Menu.Items>
         ) : (
           <Menu.Items
