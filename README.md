@@ -22,17 +22,17 @@ Duty is a great fit for:
 
 ### Sign up
 
-If you don't have a Duty account yet, you can sign up for free <a className='text-sky-300' href='/signup'>here</a>.
+If you don't have a Duty account yet, you can sign up for free <a className='text-sky-300' href='https://tryduty.com/signup'>here</a>.
 
 # Getting Started
 
 ### Sign up
 
-If you don't have a Duty account yet, you can sign up for free [here](/signup).
+If you don't have a Duty account yet, you can sign up for free [here](https://tryduty.com/signup).
 
 ### Add a project
 
-Once you've signed up, you can create a project by clicking on the [Add project](/dashboard) button on your [dashboard](/dashboard).
+Once you've signed up, you can create a project by clicking on the [Add project](https://tryduty.com/dashboard) button on your [dashboard](https://tryduty.com/dashboard).
 
 You will need to provide a name for your project and select a <a className="text-red-500">unique slug</a>. You will also need to add a description.
 
@@ -40,7 +40,7 @@ The <span className="text-red-500">slug</span> is used to identify your project 
 
 ### Add a duty
 
-Once you've created a project, you can add a duty by clicking on the ["Add duty"](/docs/create-duty) button on your <span className="text-red-500">project details page</span>.
+Once you've created a project, you can add a duty by clicking on the ["Add duty"](https://tryduty.com/docs/create-duty) button on your <span className="text-red-500">project details page</span>.
 
 # Duties
 
@@ -65,7 +65,7 @@ Otherwise the duty will fail.
 ### Parameters
 
 Duties receive one parameter, which is the `Request` object. This object contains all the information about the request that was made to the endpoint.
-So you can easily access the request body, headers, query parameters, etc. For a full list of the properties of the `Request` object, please refer to the [Request object documentation](/docs/request-object).
+So you can easily access the request body, headers, query parameters, etc. For a full list of the properties of the `Request` object, please refer to the [Request object documentation](https://tryduty.com/docs/request-object).
 
 ### Environment variables
 
@@ -77,7 +77,7 @@ API keys are used to authenticate requests to the API. You can create API keys i
 
 All you need to do is send the key as a header with the name `Duty-Token` in your request.
 
-Or you can use the [Duty SDK](/docs/sdk) to interact with the API.
+Or you can use the [Duty SDK](https://tryduty.com/docs/sdk) to interact with the API.
 
 # Request Object
 

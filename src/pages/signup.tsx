@@ -12,7 +12,7 @@ const SignUpPage = () => {
   return (
     <MainLayout>
       <div className='flex flex-col-reverse  md:flex-row  lg:h-[90vh] bg-[#000012]'>
-        <div className='flex-1 flex justify-center items-center h-[88vh] lg:h-auto items-center '>
+        <div className='flex-1 flex justify-center h-[88vh] lg:h-auto items-center '>
           <div className='px-6 lg:pl-40 grid space-y-4'>
             <h1 className='text-5xl font-bold'>
               Start your journey to the clouds! 🚀☁️
