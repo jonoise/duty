@@ -9,22 +9,10 @@ import Image from 'next/image'
 export const UserSettingsDropdown: FC<{ dark?: boolean }> = ({ dark }) => {
   const { data: session, status } = useSession()
   const auth = status === 'authenticated'
-
+  const image = [session?.user.image].filter(Boolean)[0]
   return (
     <Menu as='div' className='relative z-40'>
       <div>
-        {status === 'loading' && (
-          <Menu.Button className='flex max-w-xs items-center rounded-full text-sm focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:ring-offset-1'>
-            <span className='sr-only'>Open user menu</span>
-            <Image
-              width={32}
-              height={32}
-              className='h-8 w-8 rounded-full'
-              src={'/logo-sm.png'}
-              alt=''
-            />
-          </Menu.Button>
-        )}
         {auth ? (
           <Menu.Button className='flex max-w-xs items-center rounded-full text-sm focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:ring-offset-1'>
             <span className='sr-only'>Open user menu</span>
@@ -32,7 +20,7 @@ export const UserSettingsDropdown: FC<{ dark?: boolean }> = ({ dark }) => {
               width={32}
               height={32}
               className='h-8 w-8 rounded-full'
-              src={session?.user.image ? session?.user.image : '/logo-sm.png'}
+              src={image ? image : '/logo-sm.png'}
               alt=''
             />
           </Menu.Button>
@@ -43,7 +31,7 @@ export const UserSettingsDropdown: FC<{ dark?: boolean }> = ({ dark }) => {
               width={32}
               height={32}
               className='h-8 w-8 rounded-full'
-              src={session?.user.image ? session?.user.image : '/logo-sm.png'}
+              src={image ? image : '/logo-sm.png'}
               alt=''
             />
           </Menu.Button>
@@ -102,9 +90,7 @@ export const UserSettingsDropdown: FC<{ dark?: boolean }> = ({ dark }) => {
                     width={32}
                     height={32}
                     className='h-8 w-8 rounded-full border'
-                    src={
-                      session?.user.image ? session?.user.image : '/logo-sm.png'
-                    }
+                    src={image ? image : '/logo-sm.png'}
                     alt=''
                   />
                   <h1>Duty ™</h1>
