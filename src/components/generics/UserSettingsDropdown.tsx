@@ -13,6 +13,18 @@ export const UserSettingsDropdown: FC<{ dark?: boolean }> = ({ dark }) => {
   return (
     <Menu as='div' className='relative z-40'>
       <div>
+        {status === 'loading' && (
+          <Menu.Button className='flex max-w-xs items-center rounded-full text-sm focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:ring-offset-1'>
+            <span className='sr-only'>Open user menu</span>
+            <Image
+              width={32}
+              height={32}
+              className='h-8 w-8 rounded-full'
+              src={'/logo-sm.png'}
+              alt=''
+            />
+          </Menu.Button>
+        )}
         {auth ? (
           <Menu.Button className='flex max-w-xs items-center rounded-full text-sm focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:ring-offset-1'>
             <span className='sr-only'>Open user menu</span>
@@ -96,9 +108,11 @@ export const UserSettingsDropdown: FC<{ dark?: boolean }> = ({ dark }) => {
                   <h1>Duty ™</h1>
                 </div>
                 <h2>Deploy your next serverless API in seconds.</h2>
-                <button className='px-4 py-2 bg-blue-600 rounded-full'>
-                  Create Account
-                </button>
+                <Link href={'/signup'}>
+                  <button className='px-4 py-2 bg-blue-600 rounded-full'>
+                    Create Account
+                  </button>
+                </Link>
               </div>
             </div>
           </Menu.Items>
