@@ -21,7 +21,7 @@ const SignUpPage = () => {
               Deploy your duties on serverless functions running in the edge.
             </p>
             <div
-              onClick={() => signIn('google', { callbackUrl: '/dashboard' })}
+              onClick={() => signIn('github', { callbackUrl: '/dashboard' })}
               className='bg-blue-600 flex space-x-2 items-center justify-center hover:bg-blue-700 text-white py-2 px-4 rounded cursor-pointer'
             >
               <IoLogoGithub className='w-5 h-5' /> <p>Continue with Github</p>
@@ -32,12 +32,7 @@ const SignUpPage = () => {
             >
               <IoLogoGoogle className='w-5 h-5' /> <p>Continue with Google</p>
             </div>
-            <div
-              onClick={() => signIn('google', { callbackUrl: '/dashboard' })}
-              className='bg-blue-600 flex space-x-2 items-center justify-center hover:bg-blue-700 text-white py-2 px-4 rounded cursor-pointer'
-            >
-              <IoLogoGitlab className='w-5 h-5' /> <p>Continue with Gitlab</p>
-            </div>
+
             <p className='text-zinc-400'>
               By continuing, you agree to our{' '}
               <a href='' className='text-blue-600'>

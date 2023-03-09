@@ -70,7 +70,7 @@ export const UserSettingsDropdown: FC<{ dark?: boolean }> = ({ dark }) => {
                     callbackUrl: '/',
                   })
                 }
-                className='px-2 py-1 flex items-center space-x-2 hover:bg-[#111]'
+                className='px-2 py-1 flex items-center space-x-2 hover:bg-[#111] cursor-pointer'
               >
                 <p className='text-xs font-light'>Logout 🏄‍♀️</p>
               </div>
