@@ -28,7 +28,7 @@ const ProjectApiKeys = () => {
         </p>
         <p>
           • For convenience, to make API requests use the{' '}
-          <Link href={'https://github.com'} target='_blank'>
+          <Link href={'https://tryduty.com/docs/sdk'} target='_blank'>
             <span className='px-2 py-1 bg-zinc-800 font-mono rounded text-sky-300'>
               `duty-sdk`
             </span>

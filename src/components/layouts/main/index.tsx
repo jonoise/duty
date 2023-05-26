@@ -20,7 +20,7 @@ export const MainLayout: FC<MainLayoutProps> = (props) => {
         <SiteContainer>
           <div className='h-16 flex justify-between items-center flex-1'>
             <DutyLogo />
-            <UserSettingsDropdown />
+            <UserSettingsDropdown dark={true} />
           </div>
           {props.LinksSubnavbar && <props.LinksSubnavbar />}
         </SiteContainer>
